@@ -161,15 +161,15 @@ Kanpur, 208016, India.
 		\textbf{Thesis Supervisor}: Prof. Tushar Balasaheb Sandhan and Prof. J. Ramkumar \\
 		\textbf{Month and Year of Thesis Submission}: Month Year\\[0.1cm] }
 		\HRule \\[0.1cm] 	
-This thesis documents the design and development of the \textbf{``Drishti'' Wheat Grain Analyser}: an automated, AI-driven device for the quality assessment of wheat grain at FMCG procurement warehouses. The research addresses a critical operational inefficiency at ITC Limited, where the manual classification of a 100-gram wheat sample---comprising approximately 2,800 individual grain entities across twelve quality categories---requires up to sixty minutes per assessment cycle, creating systemic logistical bottlenecks and introducing inconsistencies attributable to operator fatigue and uneven expertise distribution.
+This thesis documents the design and development of the \textbf{``Drishti'' Wheat Grain Analyser}: an automated, AI-driven device for the quality assessment of wheat grain at FMCG procurement warehouses. The research addresses a critical operational inefficiency in FMCG wheat procurement, where the manual classification of a 100-gram wheat sample---comprising approximately 2,800 individual grain entities across twelve quality categories---requires up to sixty minutes per assessment cycle, creating systemic logistical bottlenecks and introducing inconsistencies attributable to operator fatigue and uneven expertise distribution.
 
-The research adopts a design-led methodology, beginning with a structured programme of contextual inquiry at ITC's procurement warehouses and processing factories. Ethnographic observation and in-context stakeholder interviews revealed four primary design constraints: assessment latency, tacit expertise dependency, environmental degradation of inspection quality, and susceptibility to adulteration. These constraints are framed as the empirical foundation of the design brief, from which all subsequent technical interventions were derived.
+The research adopts a design-led methodology, beginning with a structured programme of contextual inquiry at FMCG procurement warehouses and processing factories. Ethnographic observation and in-context stakeholder interviews revealed four primary design constraints: assessment latency, tacit expertise dependency, environmental degradation of inspection quality, and susceptibility to adulteration. These constraints are framed as the empirical foundation of the design brief, from which all subsequent technical interventions were derived.
 
 A central finding of the design process is that the primary barrier to automated grain analysis at industrial density is not computational but physical: the occlusion of grain entities in a dense, multi-layered sample bed renders top-down imaging insufficient for reliable multi-class classification. This ``Single-View Assumption'' problem is resolved through a hardware-software co-design intervention. An electromagnetic solenoid actuation system, governed by a staggered asynchronous pulse protocol with 50-millisecond inter-solenoid delays, achieves grain dispersion and rotation sufficient to expose ventral-side defect signatures to the imaging system across multiple frames. A precision-milled ``Hole-Fitting'' tray mechanism ensures zero-damping energy transfer from solenoid to grain bed.
 
 The computational architecture pairs this mechanical system with a domain-specific machine learning pipeline, trained on a corpus of images captured under the device's own calibrated illumination profile. A FastAPI-based server-client deployment model, containerised via Docker, ensures scalable, sub-five-minute assessment latency across multiple factory sites.
 
-The system was validated by ITC food analysts at the Bangalore headquarters, with expert evaluation confirming both classification performance and the appropriateness of the human-device interaction design for the high-pressure warehouse environment. Field trials at five factory locations are planned for future work.
+The system was validated by visiting wheat grain quality experts at FMCG procurement warehouses and processing factories, where the device was tested against samples that experienced analysts consider particularly challenging. Expert evaluation confirmed both classification performance and the appropriateness of the human-device interaction design for the high-pressure warehouse environment. Field trials at multiple factory locations are planned for future work.
 }
 \clearpage
 %----------------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ The system was validated by ITC food analysts at the Bangalore headquarters, wit
 
 \acknowledgements{\addtocontents{toc}{}
 
-This research would not have been possible without the generous cooperation of ITC Limited's procurement and quality assurance teams, whose openness during the field visits at their warehouses and processing factories provided the empirical foundation on which the entire design programme rests. The food analysts at the Bangalore headquarters, who gave their time to evaluate the Drishti prototype with the rigour it required, have the researcher's deepest gratitude.
+This research would not have been possible without the generous cooperation of the procurement and quality assurance teams at the FMCG warehouses and processing factories visited during the fieldwork phase, whose openness provided the empirical foundation on which the entire design programme rests. The wheat grain quality experts who gave their time to evaluate the Drishti prototype with the rigour it required have the researcher's deepest gratitude.
 
 The author wishes to thank their thesis supervisor for intellectual guidance that consistently asked harder questions than the ones being asked; and the faculty and peers of the Industrial Design programme at IIT Kanpur, whose critical engagement sharpened the research at every stage.
 
@@ -288,7 +288,7 @@ Finally, to the warehouse workers whose patience, expertise, and practical cando
 
 \input{Chapters/Chapter_1/Chapter1}
 \input{Chapters/Chapter_2/Chapter2} 
-\input{Chapters/Chapter_3/Chapter3}
+%\input{Chapters/Chapter_3/Chapter3}
 \input{Chapters/Chapter_4/Chapter4} 
 \input{Chapters/Chapter_5/Chapter5} 
 \input{Chapters/Chapter_6/Chapter6}

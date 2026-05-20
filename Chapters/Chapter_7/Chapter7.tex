@@ -2,7 +2,7 @@
 
 \chapter{Human-Device Interaction and User Experience Design}\doublespacing
 \label{Chapter7}
-\lhead{Chapter VII. \emph{Human-Device Interaction}}
+\lhead{Chapter VI. \emph{Human-Device Interaction}}
 
 %----------------------------------------------------------------------------------------
 \section{Designing for the High-Pressure Industrial Environment}
@@ -51,48 +51,48 @@ Three specific features were designed in direct response to observed workflow pa
 
 \begin{figure}[H]
     \centering
-    % Row 1: 3 images
-    \begin{subfigure}[t]{0.32\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{GUI Home Screen.png}
-        \caption{Home screen}
-        \label{fig:gui_home}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.32\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{GUI Step 1.png}
-        \caption{Step 1: Insert sample}
-        \label{fig:gui_step1}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.32\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{GUIStep 3.png}
-        \caption{Step 3: Calibration}
-        \label{fig:gui_step3}
-    \end{subfigure}
-    
-    \vspace{2em}
-    
-    % Row 2: 2 images, centered
-    \begin{subfigure}[t]{0.32\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{GUI Step 4.png}
-        \caption{Step 4: Image capture}
-        \label{fig:gui_step4}
-    \end{subfigure}
-    \hspace{0.05\textwidth}
-    \begin{subfigure}[t]{0.32\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{GUI Step 5.png}
-        \caption{Step 5: Quality report}
-        \label{fig:gui_step5}
-    \end{subfigure}
-    
-    \caption{The Drishti digital dashboard showing the guided operator workflow. (a) Home screen. (b) Sample insertion prompt. (c) Real-time calibration feedback. (d) Multi-frame capture progress. (e) Quality report with threshold-relative visualisation.}
-    \label{fig:gui_workflow}
+    \includegraphics[width=0.75\textwidth]{GUI Home Screen.png}
+    \caption{The Home Screen provides a clear, distraction-free starting point for the operator.}
+    \label{fig:gui_home}
 \end{figure}
+
+The workflow begins at the \textbf{Home Screen} (Figure~\ref{fig:gui_home}), which is intentionally kept minimal to reduce cognitive load. A single tap launches the assessment, reducing the number of intermediate confirmations and preventing mid-cycle interruptions.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{GUI Step 1.png}
+    \caption{Step 1: Sample Insertion prompt, ensuring the operator has correctly placed the tray before proceeding.}
+    \label{fig:gui_step1}
+\end{figure}
+
+Following initiation, \textbf{Step 1} (Figure~\ref{fig:gui_step1}) explicitly prompts the operator to insert the loaded grain tray. This step guarantees that the physical interface is securely seated in the hole-fitting mechanism before any mechanical actuation begins.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{GUIStep 3.png}
+    \caption{Step 3: Real-time optoelectrical calibration feedback.}
+    \label{fig:gui_step3}
+\end{figure}
+
+During \textbf{Step 3} (Figure~\ref{fig:gui_step3}), the system performs an optoelectrical calibration sequence. The interface displays real-time feedback, reassuring the operator that the system is actively adjusting to current ambient and internal lighting conditions.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{GUI Step 4.png}
+    \caption{Step 4: Image capture sequence, communicating progress as multiple frames are acquired.}
+    \label{fig:gui_step4}
+\end{figure}
+
+\textbf{Step 4} (Figure~\ref{fig:gui_step4}) visualises the multi-frame capture process. As the solenoids induce granular dispersion, the progress indicator clearly shows the operator how many captures have been completed, setting clear expectations for the cycle duration without requiring manual intervention.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{GUI Step 5.png}
+    \caption{Step 5: The final Quality Report, using threshold-relative visualisations for immediate interpretability.}
+    \label{fig:gui_step5}
+\end{figure}
+
+Finally, \textbf{Step 5} (Figure~\ref{fig:gui_step5}) presents the comprehensive quality report. Instead of showing isolated numbers that require mental arithmetic, each category result is displayed relative to its specific acceptance threshold. The overall verdict (e.g., Accept, Reject, or Admin Review) is immediately visible at a glance, driving the final procurement decision.
 
 %----------------------------------------------------------------------------------------
 \section{Error Visibility and Graceful Degradation}

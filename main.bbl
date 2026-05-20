@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{26}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -14,22 +14,6 @@ Thomas Reardon, Christopher~B. Barrett, Julio~A. Berdegu\'{e}, and Johan F.~M.
 \newblock \emph{World Development}, 37\penalty0 (11):\penalty0 1717--1727,
   2009.
 \newblock \doi{10.1016/j.worlddev.2008.08.023}.
-
-\bibitem[Holtzblatt and Beyer(1998)]{Holtzblatt1998}
-Karen Holtzblatt and Hugh Beyer.
-\newblock \emph{Contextual Design: Defining Customer-Centered Systems}.
-\newblock Morgan Kaufmann, San Francisco, CA, 1998.
-
-\bibitem[Polanyi(1966)]{Polanyi1966}
-Michael Polanyi.
-\newblock \emph{The Tacit Dimension}.
-\newblock Doubleday, New York, 1966.
-
-\bibitem[Parasuraman and Riley(1997)]{Parasuraman1997}
-Raja Parasuraman and Victor Riley.
-\newblock Humans and automation: Use, misuse, disuse, abuse.
-\newblock \emph{Human Factors}, 39\penalty0 (2):\penalty0 230--253, 1997.
-\newblock \doi{10.1518/001872097778543886}.
 
 \bibitem[Lingwal et~al.(2021)Lingwal, Bhatia, and Tomer]{Lingwal2021}
 Sunil Lingwal, Karan~Kishore Bhatia, and M.~S. Tomer.
@@ -75,12 +59,6 @@ Xiaohu Xu, Qiao Geng, Fengzhi Gao, et~al.
 \newblock \emph{Plant Methods}, 19:\penalty0 77, 2023.
 \newblock \doi{10.1186/s13007-023-01062-6}.
 
-\bibitem[Shen et~al.(2023)Shen, Zhen, and Li]{ShenUnsound2023}
-Rui Shen, Tao Zhen, and Zhikun Li.
-\newblock Segmentation of unsound wheat kernels based on improved mask {RCNN}.
-\newblock \emph{Sensors}, 23\penalty0 (6):\penalty0 3379, 2023.
-\newblock \doi{10.3390/s23063379}.
-
 \bibitem[Li et~al.(2024)Li, Tian, Huang, He, Liang, and Hu]{LiWheat2024}
 Jiaxin Li, Jinghao Tian, Yi~Huang, Kun He, Yao Liang, and Xing Hu.
 \newblock Hyperspectral imaging combined with dual-channel deep learning
@@ -109,12 +87,21 @@ Kurt Keutzer, A.~Richard Newton, Jan~M. Rabaey, and Alberto
   Circuits and Systems}, 19\penalty0 (12):\penalty0 1523--1543, 2000.
 \newblock \doi{10.1109/43.898828}.
 
-\bibitem[Newman and Jain(1995)]{Newman1995}
-Timothy~S. Newman and Anil~K. Jain.
-\newblock A survey of automated visual inspection.
-\newblock \emph{Computer Vision and Image Understanding}, 61\penalty0
-  (2):\penalty0 231--262, 1995.
-\newblock \doi{10.1006/cviu.1995.1017}.
+\bibitem[Holtzblatt and Beyer(1998)]{Holtzblatt1998}
+Karen Holtzblatt and Hugh Beyer.
+\newblock \emph{Contextual Design: Defining Customer-Centered Systems}.
+\newblock Morgan Kaufmann, San Francisco, CA, 1998.
+
+\bibitem[Polanyi(1966)]{Polanyi1966}
+Michael Polanyi.
+\newblock \emph{The Tacit Dimension}.
+\newblock Doubleday, New York, 1966.
+
+\bibitem[Parasuraman and Riley(1997)]{Parasuraman1997}
+Raja Parasuraman and Victor Riley.
+\newblock Humans and automation: Use, misuse, disuse, abuse.
+\newblock \emph{Human Factors}, 39\penalty0 (2):\penalty0 230--253, 1997.
+\newblock \doi{10.1518/001872097778543886}.
 
 \bibitem[Cross(2011)]{Cross2011}
 Nigel Cross.
@@ -158,8 +145,6 @@ Dirk Merkel.
 \newblock Docker: Lightweight {Linux} containers for consistent development and
   deployment.
 \newblock \emph{Linux Journal}, 2014\penalty0 (239), 2014.
-\newblock URL
-  \url{https://www.linuxjournal.com/content/docker-lightweight-linux-containers-consistent-development-and-deployment}.
 
 \bibitem[Stanton et~al.(2005)Stanton, Salmon, Walker, Baber, and
   Jenkins]{Stanton2005}

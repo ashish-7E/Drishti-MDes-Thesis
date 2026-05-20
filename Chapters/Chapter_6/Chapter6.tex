@@ -2,7 +2,7 @@
 
 \chapter{The Computational Architecture: From Pixel to Procurement Decision}\doublespacing
 \label{Chapter6}
-\lhead{Chapter VI. \emph{Computational Architecture}}
+\lhead{Chapter V. \emph{Computational Architecture}}
 
 %----------------------------------------------------------------------------------------
 \section{Optoelectrical Parameter Optimisation}
@@ -21,7 +21,7 @@ The fix was straightforward once the problem was understood: disable AWB and rep
 % Note to author: Specific model architecture details, accuracy figures, and training
 % hyperparameters should be completed once final training runs are concluded.
 
-A question that is easy to underestimate in applied machine learning is whether the training data actually represents the inference conditions. Public grain datasets are visually diverse and well-curated, but they do not represent ITC's specific wheat varieties, Drishti's illumination profile, or the partially dispersed, multi-orientation sample states that the device produces. Training on a generic dataset and deploying in a specific physical system is a form of dataset shift that reliably degrades performance in ways that do not announce themselves clearly \cite{QuinoneroCandela2009}. The degradation tends to be confident misclassification rather than uncertain prediction, which is the more dangerous failure mode.
+A question that is easy to underestimate in applied machine learning is whether the training data actually represents the inference conditions. Public grain datasets are visually diverse and well-curated, but they do not represent the procurement network's specific wheat varieties, Drishti's illumination profile, or the partially dispersed, multi-orientation sample states that the device produces. Training on a generic dataset and deploying in a specific physical system is a form of dataset shift that reliably degrades performance in ways that do not announce themselves clearly \cite{QuinoneroCandela2009}. The degradation tends to be confident misclassification rather than uncertain prediction, which is the more dangerous failure mode.
 
 The decision was therefore made to build a domain-specific dataset from scratch, capturing images under the same optical and mechanical pipeline described in Chapters~\ref{Chapter4} and~\ref{Chapter5}. Grain specimens were annotated across all twelve categories, with particular attention to the confusable pairs that fieldwork had identified as the most error-prone in manual assessment: \textit{Kernel Burnt} versus dark-variety \textit{Pure Wheat}, early \textit{Infested} versus \textit{Broken}, and \textit{Potia} versus immature \textit{Pure Wheat}.
 
@@ -37,14 +37,14 @@ Once the calibration and model choices were made, the deployment question became
 
 \begin{figure}[H]
     \centering
-    \includesvg[width=0.9\textwidth]{Drishti Hardware Architecture.svg}
+    \includegraphics[width=0.9\textwidth]{Images/Drishti Hardware Architecture.png}
     \caption{Drishti system architecture: the Raspberry Pi 5 edge node handles physical actuation and image capture; the central inference server handles segmentation and returns per-category $W/W\%$ results.}
     \label{fig:hardware_architecture}
 \end{figure}
 
 The architecture adopted is a server-client split. The Raspberry Pi 5 acts as the edge node, responsible for actuation sequencing, image capture at calibrated parameters, lightweight preprocessing (resizing, calibration transform application, and frame selection), and local user interface rendering. Preprocessed frames are transmitted over a local network connection to a central inference service. The inference service, exposed through a FastAPI endpoint, runs the instance segmentation model and returns per-category counts and derived $W/W\%$ values. These are rendered on the Raspberry Pi 5 display within the sub-five-minute window.
 
-This split has practical implications beyond performance. Running inference on a managed server allows model updates to be deployed without physical access to field devices; a versioned model container can be pushed to the inference server centrally and all connected edge nodes pick up the update automatically on their next job submission. Docker containerisation was chosen for the inference service precisely because ITC sites have heterogeneous IT environments, and a containerised inference service behaves consistently regardless of the host operating system or pre-installed software state \cite{Merkel2014}.
+This split has practical implications beyond performance. Running inference on a managed server allows model updates to be deployed without physical access to field devices; a versioned model container can be pushed to the inference server centrally and all connected edge nodes pick up the update automatically on their next job submission. Docker containerisation was chosen for the inference service precisely because field procurement sites have heterogeneous IT environments, and a containerised inference service behaves consistently regardless of the host operating system or pre-installed software state \cite{Merkel2014}.
 
 %----------------------------------------------------------------------------------------
 \section{Summary}

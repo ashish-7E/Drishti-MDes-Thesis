@@ -1,75 +1,84 @@
-% Chapter 1 --- Introduction
+% Chapter 1 --- Introduction and Literature Review
 
-\chapter{Introduction}\doublespacing
+\chapter{Introduction and Literature Review}\doublespacing
 \label{Chapter1}
-\lhead{Chapter I. \emph{Introduction}}
+\lhead{Chapter I. \emph{Introduction and Literature Review}}
 
 %----------------------------------------------------------------------------------------
 \section{Introduction}
 %----------------------------------------------------------------------------------------
 
-The first thing that strikes a visitor to an ITC procurement warehouse is not the scale of the operation---it is the silence of the sorting table. In the midst of arriving trucks, diesel engines, and shouted instructions, multiple technicians sit hunched over a 100-gram spread of wheat, working grain by grain with practiced hands. This act is the quality gate through which every consignment must pass before ITC's \textit{Aashirwad Atta} supply chain can proceed \cite{Reardon2009}.
+The first thing that strikes a visitor to a wheat procurement warehouse is not the scale of the operation---it is the silence of the sorting table. In the midst of arriving trucks and shouted instructions, technicians sit hunched over a 100-gram spread of wheat, working grain by grain with practiced hands. This act is the quality gate through which every consignment must pass before a major FMCG supply chain can proceed \cite{Reardon2009}.
 
-Watching this process during initial fieldwork, several things became clear almost immediately. The task is extraordinarily difficult to standardise. The categories the assessor must distinguish---\textit{Potia}, \textit{Black Tip}, early \textit{Infested} grain---are not well-defined in written manuals; they live in the assessor's hands and eyes. And the time it takes, on average, 60 minutes per 100-gram sample, creates a bottleneck that no amount of additional personnel can fully resolve because the bottleneck is not headcount. It is the fundamental speed of careful human attention applied to 2,800 individual entities.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Images/100g grain sample.png}
+    \caption{A typical 100-gram wheat grain sample spread on a sorting table.}
+    \label{fig:100g_sample}
+\end{figure}
 
-This thesis documents the development of the \textbf{``Drishti'' Wheat Grain Analyser}, an automated assessment device designed to address this constraint at its source. The name draws on the Sanskrit word for sight or vision---an appropriate choice given that the system's central challenge is not speed per se, but the quality of observation that speed must not compromise. The device was developed for and in dialogue with ITC Limited, whose procurement scale makes the latency problem both economically significant and technically demanding.
-
-The research was based on the conviction that good design must begin with understanding before it begins with making. No prototype was sketched until substantial time had been spent in the field, in warehouses, at sorting tables, in conversations with assessors, quality managers, and the food analysts at ITC's Bangalore headquarters who ultimately define what ``quality'' means in this context. That orientation, field-first, shaped every technical and design decision that followed.
+This thesis documents the development of the \textbf{``Drishti'' Wheat Grain Analyser}, an automated assessment device designed to address this operational bottleneck at its source. The device was developed through extensive fieldwork at FMCG procurement sites, where operational scale makes the latency problem both economically significant and technically demanding. The research was built on the conviction that good design must begin with understanding before it begins with making---a principle that shaped every technical decision that followed.
 
 %----------------------------------------------------------------------------------------
 \section{Problem Statement}
 %----------------------------------------------------------------------------------------
 
-A trained technician at an ITC procurement warehouse must sort a 100-gram wheat sample into 12 distinct categories: pure wheat, broken wheat, infested, shrivelled, blacktip, kernel burnt, potia, stones, chaff, mud balls, sticks, and other food grains. For each, the weight-by-weight percentage ($W/W\%$) is calculated and checked against acceptance thresholds before a truck is cleared for unloading. This is not a trivial categorisation task. At approximately 2,800 entities per sample, it requires close attention to morphological details, surface colour, kernel geometry, the faint darkening at a grain's tip that marks it as \textit{Black Tip}, that take months, sometimes years, of practice to read reliably.
+A trained technician at a wheat procurement warehouse must sort a 100-gram wheat sample into 12 distinct categories. At approximately 2,800 entities per sample, this requires close attention to morphological details, surface colour, and kernel geometry that take months to read reliably. At 60 minutes per cycle, assessment becomes the rate-limiting step in a continuously operating logistics chain. Furthermore, speed and accuracy are in structural tension, narrowing as a shift progresses.
 
-The time implications are significant. At 60 minutes per cycle, assessment becomes the rate-limiting step in a continuously operating logistics chain. Trucks queue. Assessors, under pressure, tire. And the categories most sensitive to fatigue, the subtle ones like \textit{Potia} and early-stage \textit{Infested} grain, are precisely those where errors carry the most downstream consequence. The problem is not simply that the process is slow. It is that speed and accuracy are in structural tension, and the margin between them narrows as a shift progresses.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/wheat categories.jpg}
+    \caption{The twelve distinct grain and impurity categories that must be identified during the manual assessment of a sample.}
+    \label{fig:wheat_categories}
+\end{figure}
 
-The problem, as distilled from extended fieldwork, is therefore compound: one of \textit{assessment latency}, \textit{quality inconsistency across operators and shifts}, and \textit{fragile concentration of tacit expertise} in a small number of senior assessors on whose presence the entire system depends.
+The problem is therefore compound: it consists of \textit{assessment latency}, \textit{quality inconsistency across operators and shifts}, and a \textit{fragile concentration of tacit expertise} in a small number of senior assessors.
+
+%----------------------------------------------------------------------------------------
+\section{Literature Review: The Limits of Existing Solutions}
+%----------------------------------------------------------------------------------------
+
+Before describing the proposed intervention, it is necessary to examine why existing computer vision approaches are insufficient for this specific operational environment.
+
+The application of computer vision to agricultural grain assessment has a long history. Early systems relied on handcrafted feature descriptors fed into classical classifiers (e.g., SVM, k-NN) \cite{Lingwal2021}, which proved fragile under variable lighting and grain orientation. The introduction of convolutional neural networks (CNNs) substantially improved variety-level classification \cite{Laabassi2021, Yasar2024}. However, these evaluations typically rely on a critical distributional assumption: test samples are sparse, carefully arranged, and well-lit.
+
+When deploying YOLO-family detectors \cite{YOLOReview2024} on dense wheat-bed assessments, two dominant failure modes emerge. First, heavy mutual overlap produces prediction conflicts that non-maximum suppression handles poorly, generating undercounts \cite{YOLODense2025}. Second, target instances are extremely small relative to the local receptive field. Even architectures with stronger localization mechanisms, such as Mask R-CNN \cite{Xu2023}, struggle with dense occlusion.
+
+Furthermore, there is a pervasive assumption that a single overhead image contains sufficient information for classification. For the twelve-category protocol used in FMCG wheat procurement, it is not. Diagnostic features of early-stage Infested grain or Black Tip discolouration are geometrically orientation-sensitive and cannot be identified if the diagnostic surface faces downward. While multispectral approaches \cite{LiWheat2024, ElMasry2019} improve spectral contrast, they do not resolve geometric occlusion.
+
+This points to the core operational constraint: the problem is one of physical observability before it is a computational one. The underlying logic of hardware-software co-design \cite{Keutzer2000} transfers directly here: rather than asking software to compensate for physical limitations, the physical setup must be engineered to present the software with a well-posed problem. If grains can be separated and their orientation varied during acquisition, the computational task becomes substantially easier and more reliable.
 
 %----------------------------------------------------------------------------------------
 \section{Research Objectives and Scope}
 %----------------------------------------------------------------------------------------
 
-The overarching aim of this research is to design, build, and evaluate an automated wheat grain quality assessment system that is genuinely suited to the conditions of ITC's procurement environment, not an idealised version, but the real one, with its dust, its noise, and its time-pressured operators. From that aim, the following specific objectives were derived:
+The overarching aim of this research is to design, build, and evaluate an automated wheat grain quality assessment system that is genuinely suited to the conditions of a real FMCG wheat procurement environment. The specific objectives are:
 
 \begin{itemize}
-    \item \textbf{Contextual inquiry of the procurement ecosystem:} To conduct structured field observation at both warehouse and factory sites, mapping the assessment workflow, documenting the record systems in active use, and surfacing the tacit knowledge that shapes how experienced assessors make category calls.
-
-    \item \textbf{Derivation of functional and ergonomic constraints:} To establish, from field evidence rather than assumption, the physical and operational requirements that any viable automated system must satisfy: handling of dense 100-gram samples ($\sim$2,800 entities), dust tolerance, and usability under time pressure.
-
-    \item \textbf{Design of a mechanical-computational intervention:} To develop a system architecture that addresses the fundamental occlusion challenge in dense grain imaging, not by asking the algorithm to compensate for poor observability, but by engineering the physical conditions of observation so that the algorithm's task becomes tractable.
-
-    \item \textbf{Iterative prototype development and expert validation:} To build through successive functional prototypes, from small-scale proof-of-concept to field-ready unit, testing each generation against real grain samples and incorporating feedback from ITC's quality assurance team.
-
-    \item \textbf{Contribution of design guidelines for industrial AI:} To document the design decisions made in this project in terms that are useful to practitioners working at the intersection of industrial design and applied machine learning.
+    \item \textbf{Contextual inquiry of the procurement ecosystem:} To map the assessment workflow and document tacit knowledge driving category calls.
+    \item \textbf{Derivation of functional constraints:} To establish the physical requirements for dense 100-gram sample handling ($\sim$2,800 entities), dust tolerance, and time pressure.
+    \item \textbf{Design of a mechanical-computational intervention:} To engineer physical observability to solve the occlusion challenge, adopting a hardware-software co-design approach.
+    \item \textbf{Iterative prototyping and validation:} To build and test successive functional prototypes against real grain samples with feedback from domain experts.
 \end{itemize}
 
-The research is scoped to the procurement and storage phases of the ITC wheat supply chain, focusing on the twelve grain and impurity categories specified in ITC's quality standards. Processing and packaging stages fall outside its boundary.
+The scope is bounded to the procurement and storage phases of the wheat supply chain, focusing exclusively on the twelve grain and impurity categories specified in standard FMCG protocols.
 
 %----------------------------------------------------------------------------------------
 \section{Thesis Organisation}
 %----------------------------------------------------------------------------------------
 
-The thesis is structured to reflect how the research actually unfolded---from initial field immersion through to design synthesis and expert evaluation.
+The thesis is structured to reflect the unfolding of the research:
 
-Chapter~\ref{Chapter2} presents the contextual inquiry: observations and interviews at ITC warehouses and factories that gave shape to the design brief. The reader who skips this chapter will not understand why subsequent design decisions were made.
-
-Chapter~\ref{Chapter3} reviews the relevant literature - computer vision for grain classification, the specific failure modes of dense-object detection, and the hardware-software co-design framework that the research ultimately adopts.
-
-Chapter~\ref{Chapter4} traces the design methodology and prototyping sequence, from early illumination experiments through two prototype generations to the pivot that defined the rest of the project.
-
-Chapter~\ref{Chapter5} addresses the mechanical design problem in detail: why vibration failed, how electromagnetic solenoid actuation was developed as an alternative, and how the asynchronous pulse timing logic was arrived at empirically.
-
-Chapter~\ref{Chapter6} covers the computational architecture: optoelectrical calibration, dataset construction strategy, and the edge-to-server deployment model.
-
-Chapter~\ref{Chapter7} examines human-device interaction, addressing both the physical tray interface and the digital dashboard that communicates assessment outcomes to operators.
-
-Chapter~\ref{Chapter8} reports expert validation outcomes from the demonstration conducted at ITC headquarters in Bangalore.
-
-Chapter~\ref{Chapter9} synthesises the research contributions, acknowledges the study's limitations with appropriate candour, and identifies the most productive directions for future work.
+Chapter~\ref{Chapter2} presents the contextual inquiry, detailing the observations and interviews at procurement warehouses and processing factories that shaped the design brief.
+Chapter~\ref{Chapter4} traces the design methodology and prototyping sequence, from early illumination experiments through successive prototype generations.
+Chapter~\ref{Chapter5} addresses the mechanical design problem: why vibration failed, and how electromagnetic solenoid actuation was developed.
+Chapter~\ref{Chapter6} covers the computational architecture, including optoelectrical calibration, dataset construction, and edge-to-server deployment.
+Chapter~\ref{Chapter7} examines human-device interaction, covering the physical tray interface and the digital dashboard.
+Chapter~\ref{Chapter8} reports expert validation outcomes from demonstrations conducted with quality experts at FMCG sites.
+Chapter~\ref{Chapter9} synthesises the research contributions, acknowledges limitations, and identifies future work directions.
 
 %----------------------------------------------------------------------------------------
 \section{Summary}
 %----------------------------------------------------------------------------------------
 
-The problem addressed in this thesis is deceptively simple to state: a quality assessment that takes sixty minutes needs to take five. The actual design challenge, as the fieldwork made clear, is considerably more complex. It involves understanding what experienced assessors actually do, and why, before proposing any alternative. The chapters that follow are an account of how that understanding was built and what it made possible.
+The actual design challenge is considerably more complex than simply accelerating a sixty-minute task to five minutes. It requires understanding the limits of current machine learning models in dense, occluded environments and engineering physical observability to bridge the gap. The chapters that follow detail how that understanding was built and what it made possible.

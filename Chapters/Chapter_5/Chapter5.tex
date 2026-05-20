@@ -2,7 +2,7 @@
 
 \chapter{Mechanical Innovation and Granular Dispersion}\doublespacing
 \label{Chapter5}
-\lhead{Chapter V. \emph{Mechanical Innovation and Granular Dispersion}}
+\lhead{Chapter IV. \emph{Mechanical Innovation and Granular Dispersion}}
 
 %----------------------------------------------------------------------------------------
 \section{The Necessity of Mechanical Dispersion}
@@ -40,6 +40,25 @@ Electromagnetic solenoids suited this requirement. On activation, a solenoid dri
 
 The tray was coupled to four solenoids positioned at the cardinal midpoints of its underside, oriented to deliver distributed vertical impulses across the full imaging area. The arrangement was chosen to avoid having all impulse energy concentrated in one region of the tray.
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{before solenoid action.png}
+        \caption{Before dispersion: dense, multi-layered packing with significant occlusion.}
+        \label{fig:before_solenoid}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{after solenoid action.png}
+        \caption{After dispersion: measurable grain isolation and orientation diversity following a single actuation cycle.}
+        \label{fig:after_solenoid}
+    \end{subfigure}
+    \caption{The 100-gram grain sample before and after a single solenoid actuation cycle, demonstrating the transition from dense occlusion to measurable grain isolation and orientation diversity.}
+    \label{fig:solenoid_dispersion}
+\end{figure}
+
 %----------------------------------------------------------------------------------------
 \section{Asynchronous Pulse Logic and Timing}
 %----------------------------------------------------------------------------------------
@@ -59,6 +78,13 @@ Using Raspberry Pi 5 GPIO control, with solenoids $\{S_A, S_B, S_C, S_D\}$, acti
 \end{align}
 
 Each solenoid deactivates 500\,ms after activation; one complete cycle therefore spans 650\,ms. The 50\,ms inter-solenoid interval was arrived at empirically: intervals below 40\,ms began to reintroduce interference effects, while intervals above 80\,ms weakened the cross-tray shear action that made this approach effective. Multiple cycles are executed per assessment session, with image capture interleaved between cycles to accumulate orientation diversity across the full frame sequence.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{Images/solenoid_timing.png}
+    \caption{Timing diagram for the staggered asynchronous solenoid pulse protocol. Each solenoid ($S_A$ through $S_D$) activates sequentially with a 50\,ms inter-solenoid delay and remains active for 500\,ms. The complete four-solenoid cycle spans 650\,ms. The staggered pattern produces a travelling impulse wave across the tray, generating grain rotation and dispersion without interference between simultaneous activations.}
+    \label{fig:solenoid_timing}
+\end{figure}
 
 %----------------------------------------------------------------------------------------
 \section{Hardware Integration: The Hole-Fitting Mechanism}

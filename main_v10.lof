@@ -1,0 +1,21 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Initial checks during periphery testing: (a) moisture measurement and (b) Hectolitre weight for variety verification.}}{10}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Master sample collection from \textit {boris} at godown.}}{11}{figure.caption.26}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Final illumination configurations selected for the dual-illumination system: (a)~BY yellow backlight for grain boundary segmentation, (b)~WB white top-light for general classification, and (c)~BR red backlight for multispectral defect classification.}}{21}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Prototype~I: low-fidelity 3D-printed enclosure validating the dual-illumination hypothesis.}}{23}{figure.caption.40}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Prototype~II at industrial scale, showing the high-density occlusion problem that redirected the subsequent design brief.}}{24}{figure.caption.42}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Physical assembly sequence of the final prototype. (a)~Custom PCB for solenoid pulse timing. (b--d)~Progressive chassis and electronics assembly. (e)~Completed device prepared for deployment.}}{33}{figure.caption.55}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces CAD exploded view of the Drishti device, showing the vertical component stack: optics module, electromagnetic actuation array, and control electronics within the aluminium chassis.}}{34}{figure.caption.54}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Drishti system architecture: the Raspberry Pi 5 edge node handles physical actuation and image capture; the central inference server handles segmentation and returns per-category $W/W\%$ results.}}{38}{figure.caption.61}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces The finalised Drishti device with the hole-fitting grain tray, positioned for sample loading.}}{42}{figure.caption.67}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces The Drishti digital dashboard showing the guided operator workflow. (a) Home screen. (b) Sample insertion prompt. (c) Real-time calibration feedback. (d) Multi-frame capture progress. (e) Quality report with threshold-relative visualisation.}}{44}{figure.caption.69}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
