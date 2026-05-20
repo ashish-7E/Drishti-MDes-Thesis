@@ -8,23 +8,21 @@
 \section{Designing for the High-Pressure Industrial Environment}
 %----------------------------------------------------------------------------------------
 
-There is a particular challenge in designing for an industrial environment that looks, from the outside, like a straightforward usability problem but is not. The task that Drishti is meant to support---wheat quality assessment---is already being performed. It is being performed by experienced people who have developed their own workflows, their own shortcuts, and their own sense of what a good result looks like. Any new device enters that context not as a blank slate but as something that must earn its place in a routine that is already functional.
+Drishti is designed for operators already performing wheat quality assessment in high-pressure warehouse conditions. The device must integrate into an existing workflow, not replace it.
 
-The fieldwork described in Chapter~\ref{Chapter2} made this concrete. Operators at the warehouse site were managing a queue of trucks, working with fine dust on every surface, handling grain in conditions that would be physically demanding even without the cognitive load of simultaneous classification and recording. The interaction model for Drishti was designed against that reality, not against a controlled user-testing scenario \cite{Stanton2005}. Norman's framework for design under real operating conditions \cite{Norman2013} provided a useful conceptual anchor: the goal is to reduce the number of decisions the operator has to make explicitly, not to eliminate their agency.
+Operators at the warehouse site manage truck queues, work with fine dust on all surfaces, and handle grain under conditions that are physically demanding. The interaction model was designed against that operational reality \cite{Stanton2005, Norman2013}. The goal is to reduce the number of decisions an operator must make explicitly, without removing their agency.
 
-Two distinct interaction layers were addressed. The physical layer covers the tactile and procedural aspects of loading, unloading, and maintaining the device---everything that happens before and after an assessment. The digital layer covers how the system communicates during and after inference: what information is shown, in what order, and what actions the operator is expected to take.
+Two interaction layers were addressed: the \textit{physical layer} covers loading, unloading, and maintaining the device; the \textit{digital layer} covers how the system communicates results and what actions the operator must take.
 
 %----------------------------------------------------------------------------------------
 \section{Iterative Design of the Physical Interface}
 %----------------------------------------------------------------------------------------
 
-\subsection{The Problem of the Grain Tray}
+The grain tray is loaded and unloaded with every assessment---up to forty times per shift. Tray interface design therefore received significant attention.
 
-The grain tray is loaded and unloaded with every assessment. In a busy procurement shift, that could happen thirty or forty times. A mechanism that takes fifteen seconds to operate rather than five does not seem like a significant difference until it is multiplied across a working day and a working season. The tray interface therefore received more design attention than its apparent simplicity might suggest.
+The first iteration was a drawer mechanism with guide rails and magnetic retention. It was rejected for three reasons: solenoid magnetic fields destabilised the retention force; guide rails absorbed plunger energy, reducing impulse effectiveness; and fine wheat dust accumulated in the rail channels across a shift, progressively stiffening the mechanism.
 
-The first iteration was a drawer mechanism with guide rails and magnetic retention. The logic was straightforward: drawer mechanisms are universally familiar, and the pull-out motion is intuitive enough that no instruction is required. It was rejected for reasons described in Chapter~\ref{Chapter5}---magnetic retention was destabilised by active solenoid fields, and the rails introduced enough compliance to damp the impulse actuation that the system depended on. A third problem emerged during field evaluation: dust. The rail channels accumulated fine wheat dust over repeated use, progressively increasing the friction that needed to be overcome on each opening. After a full shift, the drawer that had operated smoothly in the morning required deliberate force to open.
-
-The finalised design uses a vertical placement approach: the operator loads grain onto the tray and places the tray directly downward onto four plunger apertures in the device surface. The motion is not intuitively obvious before instruction, but it takes under three seconds once learned and involves no moving parts beyond the tray itself. Nothing accumulates dust because there are no channels for it to accumulate in.
+The finalised design uses vertical tray placement: the operator places the tray directly downward onto four plunger apertures. The motion takes under three seconds once learned. There are no channels for dust to accumulate in.
 
 \begin{figure}[H]
     \centering
@@ -37,17 +35,15 @@ The finalised design uses a vertical placement approach: the operator loads grai
 \section{The Digital Dashboard: Information Hierarchy in Practice}
 %----------------------------------------------------------------------------------------
 
-The dashboard design problem was specific: the device produces a classification across twelve categories, each with a $W/W\%$ value, each compared against a threshold, and each potentially relevant to the accept/reject decision. Presenting twelve numbers simultaneously to an operator under time pressure is not informative; it is overwhelming. Tufte's \cite{Tufte2001} principle of information hierarchy---that the most important information should be visually dominant---was applied directly.
+The results screen displays classification data across twelve categories, each with a $W/W\%$ value compared against a threshold. Information is structured in three levels of priority. The primary element is the overall verdict---Accept, Reject, or Admin Review---displayed in a large, colour-coded format. The secondary layer shows which categories are out-of-threshold. The tertiary layer provides full category-by-category breakdowns, visible on request.
 
-The primary visual element on the results screen is the overall verdict: Accept or Reject, displayed in a large, colour-coded format that requires no interpretation. The secondary layer shows which categories are out-of-threshold, with visual indicators that communicate compliance relative to the limit rather than raw numbers that require mental arithmetic. The tertiary layer---detailed category-by-category breakdowns---is available for operators who want to understand why a result was reached, but it does not appear unless requested.
+Three features were designed in direct response to fieldwork observations:
 
-Three specific features were designed in direct response to observed workflow patterns from the contextual inquiry:
+\textbf{One-Touch Testing:} The full assessment cycle launches from a single operator action after tray placement. There are no intermediate confirmations or parameter adjustments. Interruptions in a continuous flow task increase error rate; one-touch launch minimises them.
 
-\textbf{One-Touch Testing:} The full assessment cycle launches from a single operator action after tray placement. No intermediate confirmations, no parameter adjustment, no form-filling mid-cycle. The observation from the field was that interruptions in a continuous flow task increase error rate; one-touch launch minimises the number of such interruptions.
+\textbf{Threshold Visualisation:} Each category result is displayed relative to its acceptance threshold, not as an isolated number. Operators do not need to recall the limit for each category and perform the comparison mentally.
 
-\textbf{Threshold Visualisation:} Each category result is shown as a position relative to its acceptance threshold rather than as an isolated number. An operator does not need to remember that the \textit{Broken} limit is 2.5\% and compare it against the displayed value; the display does that comparison and shows the result directly.
-
-\textbf{Admin Review for Near-Threshold Cases:} Any category result within $\pm 2\%$ of threshold triggers an Admin Review flag rather than automatic Accept/Reject finalisation. The reasoning behind this feature came directly from watching quality managers at the factory site: the decisions they found most difficult---and most consequential---were not clear passes or clear failures, but the borderline cases where the number was within the margin and the appropriate response depended on context that the number alone did not capture. Admin Review holds those cases for expert attention rather than resolving them automatically.
+\textbf{Admin Review for Near-Threshold Cases:} Any result within $\pm 2\%$ of threshold triggers an Admin Review flag instead of an automatic verdict. Borderline cases require contextual judgement that the number alone cannot provide. Admin Review routes those cases to expert attention.
 
 \begin{figure}[H]
     \centering
@@ -56,7 +52,7 @@ Three specific features were designed in direct response to observed workflow pa
     \label{fig:gui_home}
 \end{figure}
 
-The workflow begins at the \textbf{Home Screen} (Figure~\ref{fig:gui_home}), which is intentionally kept minimal to reduce cognitive load. A single tap launches the assessment, reducing the number of intermediate confirmations and preventing mid-cycle interruptions.
+The workflow begins at the \textbf{Home Screen} (Figure~\ref{fig:gui_home}). A single tap launches the assessment, minimising confirmations and preventing mid-cycle interruptions.
 
 \begin{figure}[H]
     \centering
@@ -65,7 +61,7 @@ The workflow begins at the \textbf{Home Screen} (Figure~\ref{fig:gui_home}), whi
     \label{fig:gui_step1}
 \end{figure}
 
-Following initiation, \textbf{Step 1} (Figure~\ref{fig:gui_step1}) explicitly prompts the operator to insert the loaded grain tray. This step guarantees that the physical interface is securely seated in the hole-fitting mechanism before any mechanical actuation begins.
+\textbf{Step 1} (Figure~\ref{fig:gui_step1}) prompts the operator to insert the loaded grain tray, confirming that the tray is seated in the hole-fitting mechanism before mechanical actuation begins.
 
 \begin{figure}[H]
     \centering
@@ -74,7 +70,7 @@ Following initiation, \textbf{Step 1} (Figure~\ref{fig:gui_step1}) explicitly pr
     \label{fig:gui_step3}
 \end{figure}
 
-During \textbf{Step 3} (Figure~\ref{fig:gui_step3}), the system performs an optoelectrical calibration sequence. The interface displays real-time feedback, reassuring the operator that the system is actively adjusting to current ambient and internal lighting conditions.
+During \textbf{Step 3} (Figure~\ref{fig:gui_step3}), the system performs optoelectrical calibration. Real-time feedback confirms that the system is adjusting to current lighting conditions before image capture begins.
 
 \begin{figure}[H]
     \centering
@@ -83,7 +79,7 @@ During \textbf{Step 3} (Figure~\ref{fig:gui_step3}), the system performs an opto
     \label{fig:gui_step4}
 \end{figure}
 
-\textbf{Step 4} (Figure~\ref{fig:gui_step4}) visualises the multi-frame capture process. As the solenoids induce granular dispersion, the progress indicator clearly shows the operator how many captures have been completed, setting clear expectations for the cycle duration without requiring manual intervention.
+\textbf{Step 4} (Figure~\ref{fig:gui_step4}) visualises the multi-frame capture process. A progress indicator shows how many captures have been completed, setting expectations for cycle duration.
 
 \begin{figure}[H]
     \centering
@@ -92,22 +88,16 @@ During \textbf{Step 3} (Figure~\ref{fig:gui_step3}), the system performs an opto
     \label{fig:gui_step5}
 \end{figure}
 
-Finally, \textbf{Step 5} (Figure~\ref{fig:gui_step5}) presents the comprehensive quality report. Instead of showing isolated numbers that require mental arithmetic, each category result is displayed relative to its specific acceptance threshold. The overall verdict (e.g., Accept, Reject, or Admin Review) is immediately visible at a glance, driving the final procurement decision.
+\textbf{Step 5} (Figure~\ref{fig:gui_step5}) presents the quality report. Each category result is displayed relative to its acceptance threshold. The overall verdict is immediately visible, driving the final procurement decision.
 
 %----------------------------------------------------------------------------------------
 \section{Error Visibility and Graceful Degradation}
 %----------------------------------------------------------------------------------------
 
-A system that communicates its failure states as clearly as its success states is a safer system to rely on \cite{Shneiderman2016}. Three failure modes specific to the field deployment context were identified and addressed in the interface design.
+Three failure modes specific to field deployment were identified and addressed in the interface design \cite{Shneiderman2016}.
 
-\textbf{Grain overload detection:} If a tray is loaded with more than a standard 100-gram sample, or if grain distributes in a configuration that resists dispersion, segmentation density monitoring detects the anomalous state and prompts the operator to redistribute before proceeding. The alternative---silently generating an estimate from an inadequately dispersed sample---is worse than no estimate at all.
+\textbf{Grain overload detection:} If grain distributes in a configuration that resists dispersion, density monitoring detects the anomalous state and prompts the operator to redistribute before proceeding.
 
-\textbf{Optical contamination alert:} Image quality metrics are monitored during the capture sequence. If dust accumulation on the imaging surface has degraded optical clarity to a level that could affect inference reliability, the dashboard flags a cleaning prompt and prevents new assessment submission until the operator confirms cleaning is complete.
+\textbf{Optical contamination alert:} If dust on the imaging surface degrades optical clarity below a reliable threshold, the dashboard flags a cleaning prompt and prevents submission until the operator confirms cleaning.
 
-\textbf{Connectivity status:} Because inference runs on a remote server, network state is always visible in the interface status bar. On connection loss, the system holds the captured frame sequence in a local queue and resubmits automatically when connectivity is restored, so that an assessment in progress is not simply abandoned.
-
-%----------------------------------------------------------------------------------------
-\section{Summary}
-%----------------------------------------------------------------------------------------
-
-The HDI design decisions in this chapter share a common origin: each of them came from watching the actual process fail, or from anticipating specific ways the automation could introduce new failure modes of its own. The drawer was replaced not because the hole-fitting mechanism was the theoretically superior design pattern, but because the drawer accumulated dust in a way that would have made it unusable within weeks. Admin Review was added not as a hedge against the system's limitations, but because observing quality managers made it clear that not all borderline decisions should be automated---some of them are genuinely judgment calls that require context only a human carries. The interface attempts, in each of these ways, to be honest about what the system can and cannot do dependably.
+\textbf{Connectivity status:} Network state is always visible in the status bar. On connection loss, the frame sequence is held in a local queue and resubmitted automatically when connectivity is restored.

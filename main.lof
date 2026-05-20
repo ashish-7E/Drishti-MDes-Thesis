@@ -1,30 +1,30 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {1.1}{\ignorespaces A typical 100-gram wheat grain sample spread on a sorting table.}}{1}{figure.caption.14}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces The twelve distinct grain and impurity categories that must be identified during the manual assessment of a sample.}}{3}{figure.caption.16}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces The twelve distinct grain and impurity categories identified during manual assessment.}}{2}{figure.caption.16}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Initial checks during periphery testing: (a) moisture measurement and (b) Hectolitre weight for variety verification.}}{10}{figure.caption.26}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Master sample collection from \textit {boris} at godown.}}{11}{figure.caption.29}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Initial checks during periphery testing: (a) moisture measurement and (b) Hectolitre weight for variety verification.}}{8}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Master sample collection from \textit {boris} at godown.}}{9}{figure.caption.28}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Final illumination configurations selected for the dual-illumination system: (a)~BY yellow backlight for grain boundary segmentation, (b)~WB white top-light for general classification, and (c)~BR red backlight for multispectral defect classification.}}{16}{figure.caption.35}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Prototype~I: low-fidelity 3D-printed enclosure validating the dual-illumination hypothesis.}}{18}{figure.caption.37}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Prototype~II at industrial scale, showing the high-density occlusion problem that redirected the subsequent design brief.}}{19}{figure.caption.39}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Final illumination configurations: (a)~BY yellow backlight for grain boundary segmentation, (b)~WB white top-light for general classification, and (c)~BR red backlight for multispectral defect classification.}}{12}{figure.caption.32}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Prototype~I: low-fidelity 3D-printed enclosure validating the dual-illumination hypothesis.}}{13}{figure.caption.34}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Prototype~II at industrial scale, showing the high-density occlusion problem that redirected the design brief.}}{14}{figure.caption.36}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces The 100-gram grain sample before and after a single solenoid actuation cycle, demonstrating the transition from dense occlusion to measurable grain isolation and orientation diversity.}}{24}{figure.caption.46}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Timing diagram for the staggered asynchronous solenoid pulse protocol. Each solenoid ($S_A$ through $S_D$) activates sequentially with a 50\,ms inter-solenoid delay and remains active for 500\,ms. The complete four-solenoid cycle spans 650\,ms. The staggered pattern produces a travelling impulse wave across the tray, generating grain rotation and dispersion without interference between simultaneous activations.}}{26}{figure.caption.49}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Physical assembly sequence of the final prototype. (a)~Custom PCB for solenoid pulse timing. (b--d)~Progressive chassis and electronics assembly. (e)~Completed device prepared for deployment.}}{29}{figure.caption.54}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces CAD exploded view of the Drishti device, showing the vertical component stack: optics module, electromagnetic actuation array, and control electronics within the aluminium chassis.}}{30}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The 100-gram grain sample before and after a single solenoid actuation cycle, demonstrating the transition from dense occlusion to measurable grain isolation and orientation diversity.}}{17}{figure.caption.42}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Timing diagram for the staggered asynchronous solenoid pulse protocol. Each solenoid ($S_A$ through $S_D$) activates sequentially with a 50\,ms inter-solenoid delay and remains active for 500\,ms. The staggered pattern produces a travelling impulse wave, generating grain rotation and dispersion without interference between activations.}}{18}{figure.caption.45}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Physical assembly sequence of the final prototype. (a)~Custom PCB for solenoid pulse timing. (b--d)~Progressive chassis and electronics assembly. (e)~Completed device prepared for deployment.}}{20}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces CAD exploded view of the Drishti device, showing the vertical component stack: optics module, electromagnetic actuation array, and control electronics within the aluminium chassis.}}{21}{figure.caption.49}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Drishti system architecture: the Raspberry Pi 5 edge node handles physical actuation and image capture; the central inference server handles segmentation and returns per-category $W/W\%$ results.}}{34}{figure.caption.60}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Drishti system architecture: the Raspberry Pi 5 edge node handles physical actuation and image capture; the central inference server handles segmentation and returns per-category $W/W\%$ results.}}{24}{figure.caption.55}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces The finalised Drishti device with the hole-fitting grain tray, positioned for sample loading.}}{38}{figure.caption.66}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces The Home Screen provides a clear, distraction-free starting point for the operator.}}{40}{figure.caption.68}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Step 1: Sample Insertion prompt, ensuring the operator has correctly placed the tray before proceeding.}}{41}{figure.caption.69}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Step 3: Real-time optoelectrical calibration feedback.}}{41}{figure.caption.70}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Step 4: Image capture sequence, communicating progress as multiple frames are acquired.}}{42}{figure.caption.71}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Step 5: The final Quality Report, using threshold-relative visualisations for immediate interpretability.}}{42}{figure.caption.72}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces The finalised Drishti device with the hole-fitting grain tray, positioned for sample loading.}}{28}{figure.caption.59}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces The Home Screen provides a clear, distraction-free starting point for the operator.}}{29}{figure.caption.61}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Step 1: Sample Insertion prompt, ensuring the operator has correctly placed the tray before proceeding.}}{30}{figure.caption.62}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Step 3: Real-time optoelectrical calibration feedback.}}{30}{figure.caption.63}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Step 4: Image capture sequence, communicating progress as multiple frames are acquired.}}{31}{figure.caption.64}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Step 5: The final Quality Report, using threshold-relative visualisations for immediate interpretability.}}{31}{figure.caption.65}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Comparison of assessment times between manual human inspection and the automated Drishti device across various GPU server configurations.}}{47}{figure.caption.78}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Comparative accuracy assessment across three inspection scenarios evaluated on ten standard test cases: manual inspection by an experienced technician, camera-based inspection in open uncontrolled lighting, and camera-based inspection within the Drishti device. The Drishti device's controlled illumination and multi-frame capture with solenoid dispersion consistently produced the highest accuracy across defect categories, particularly for orientation-sensitive cases such as Infested and Kernel Burnt grains.}}{50}{figure.caption.81}%
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Comparison of assessment times between manual human inspection and the automated Drishti device across various GPU server configurations.}}{34}{figure.caption.70}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Comparative accuracy across three inspection scenarios over ten test cases: manual inspection, open-environment camera, and Drishti. The device achieved the highest accuracy, particularly for orientation-sensitive categories such as \textit {Infested} and \textit {Kernel Burnt}.}}{36}{figure.caption.73}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
