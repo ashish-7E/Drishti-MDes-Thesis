@@ -1,0 +1,25 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Initial checks during periphery testing: (a) moisture measurement and (b) Hectolitre weight for variety verification.}}{9}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Master sample collection from \textit {boris} at godown.}}{10}{figure.caption.27}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Final illumination configurations selected for the dual-illumination system: (a)~BY yellow backlight for grain boundary segmentation, (b)~WB white top-light for general classification, and (c)~BR red backlight for multispectral defect classification.}}{15}{figure.caption.33}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Prototype~I: low-fidelity 3D-printed enclosure validating the dual-illumination hypothesis.}}{17}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Prototype~II at industrial scale, showing the high-density occlusion problem that redirected the subsequent design brief.}}{18}{figure.caption.37}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Physical assembly sequence of the final prototype. (a)~Custom PCB for solenoid pulse timing. (b--d)~Progressive chassis and electronics assembly. (e)~Completed device prepared for deployment.}}{27}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces CAD exploded view of the Drishti device, showing the vertical component stack: optics module, electromagnetic actuation array, and control electronics within the aluminium chassis.}}{28}{figure.caption.49}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Drishti system architecture: the Raspberry Pi 5 edge node handles physical actuation and image capture; the central inference server handles segmentation and returns per-category $W/W\%$ results.}}{32}{figure.caption.56}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces The finalised Drishti device with the hole-fitting grain tray, positioned for sample loading.}}{36}{figure.caption.62}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces The Home Screen provides a clear, distraction-free starting point for the operator.}}{38}{figure.caption.64}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Step 1: Sample Insertion prompt, ensuring the operator has correctly placed the tray before proceeding.}}{39}{figure.caption.65}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Step 3: Real-time optoelectrical calibration feedback.}}{39}{figure.caption.66}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Step 4: Image capture sequence, communicating progress as multiple frames are acquired.}}{40}{figure.caption.67}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Step 5: The final Quality Report, using threshold-relative visualisations for immediate interpretability.}}{41}{figure.caption.68}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Comparison of assessment times between manual human inspection and the automated Drishti device across various GPU server configurations.}}{47}{figure.caption.76}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

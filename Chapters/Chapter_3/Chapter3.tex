@@ -1,0 +1,51 @@
+% Chapter 3 --- Literature Review and State of the Art
+
+\chapter{Literature Review and State of the Art}\doublespacing
+\label{Chapter3}
+\lhead{Chapter III. \emph{Literature Review and State of the Art}}
+
+%----------------------------------------------------------------------------------------
+\section{Computer Vision in Agriculture: A Trajectory}
+%----------------------------------------------------------------------------------------
+
+Before describing what this research does, it helps to be clear about what already exists and why it is not sufficient.
+
+The application of computer vision to agricultural grain assessment has a reasonably long history, and the results are, in aggregate, encouraging but conditional. Early systems relied on handcrafted feature descriptors---shape measurements, texture statistics derived from grey-level co-occurrence matrices, colour histogram profiles---fed into classical classifiers such as SVM or k-NN. The survey by \cite{Lingwal2021} provides a systematic account of this era. The recurring finding is that these approaches work well in controlled settings and considerably less well when the conditions of image acquisition vary. Lighting angle, grain orientation, and regional morphological differences between wheat varieties all degrade performance in ways that handcrafted features have limited ability to compensate for.
+
+The introduction of convolutional neural networks changed the picture substantially. By learning discriminative visual features from labelled data rather than from manually specified rules, CNN-based systems showed robustly improved variety-level classification performance. Studies by \cite{Laabassi2021} and \cite{Yasar2024} demonstrate successful discrimination between \textit{Sharbati}, \textit{Durum}, and \textit{Lokwan} varieties under reasonably realistic conditions. The qualitative shift in capability is real. What is less often acknowledged is the distributional assumption embedded in most reported evaluations: the test samples are sparse, carefully arranged, and photographed under controlled illumination. That is not the operating environment this research needed to address.
+
+%----------------------------------------------------------------------------------------
+\section{The Paradox of YOLO in High-Density Environments}
+%----------------------------------------------------------------------------------------
+
+YOLO-family detectors have become near-ubiquitous in real-time vision applications, and their deployment profile---single forward pass, fast inference, modest computational footprint---makes them attractive for edge deployment \cite{YOLOReview2024}. For many agricultural tasks, they perform well. Dense wheat-bed assessment is an exception worth examining carefully.
+
+A 100-gram wheat sample placed on a flat tray presents roughly 2,800 grain entities in close proximity. Under these conditions, two effects become dominant. First, heavy mutual overlap produces prediction conflicts that non-maximum suppression handles poorly, generating undercounts and merged detections \cite{YOLODense2025}. Second, the anchor and grid assumptions on which YOLO architectures are built are stressed when target instances are very small relative to the local receptive field, as is the case with a 3--5 mm wheat kernel in a wide-field overhead image.
+
+Comparable failure modes appear in other dense-entity domains: crowd counting, histological cell segmentation, and agricultural spike density estimation. The pattern is consistent enough that it should be taken as a structural property of the problem rather than a failure mode that can be patched by choosing a better model. Even architectures with stronger localization mechanisms, such as Mask R-CNN variants examined by \cite{Xu2023}, require substantial task-specific adaptation under dense occlusion. The implication, which took some time to fully accept, is that pushing on the model side alone is unlikely to solve the problem. The physical presentation of the sample needs to change first.
+
+%----------------------------------------------------------------------------------------
+\section{The Occlusion Problem and the Single-View Assumption}
+%----------------------------------------------------------------------------------------
+
+There is an assumption buried in the design of most automated grain quality studies that deserves explicit examination: that a single overhead image of a grain sample contains sufficient information for classification. For broad morphological assessments---separating wheat from chaff, or whole kernels from broken ones---this is probably true. For ITC's twelve-category protocol, it is not.
+
+Several defect signatures are geometrically orientation-sensitive. The diagnostic features of early-stage \textit{Infested} grain---characteristic entry points on the kernel surface---are not visible from above if the kernel happens to lie with that surface downward. The darkening that marks \textit{Black Tip} and \textit{Kernel Burnt} specimens is similarly distributed in ways that depend on how the grain has settled. \cite{ShenUnsound2023} reported systematic under-detection of ventral-side defects in single-image acquisition settings, which is precisely the failure mode most damaging for quality assessment: the system confidently misclassifies because it is literally not seeing the relevant evidence.
+
+Multispectral and hyperspectral imaging approaches \cite{LiWheat2024, ElMasry2019} offer improved spectral contrast for certain defect types, but they do not resolve geometric occlusion. A hyperspectral sensor imaging a wheat grain that is lying on its diagnostic surface still cannot see that surface. The problem is one of physical observability, and improving the sensor does not address it.
+
+%----------------------------------------------------------------------------------------
+\section{Hardware-Software Co-Design: Engineering Observability}
+%----------------------------------------------------------------------------------------
+
+The concept of hardware-software co-design \cite{Keutzer2000} was developed in the context of embedded processor architecture, but the underlying logic transfers to this problem directly: rather than asking the software to compensate for the limitations of the physical setup, design the physical setup to present the software with a well-posed problem.
+
+Applied to dense grain assessment, this means accepting that occlusion is a physical phenomenon before it is a computational one. If grains can be separated and their orientation varied during image acquisition, the vision model is no longer being asked to infer what it cannot see; it is being presented with isolated, diverse views of each specimen and asked to classify from good evidence. The computational task becomes substantially easier, and the performance of a well-trained classifier becomes predictably better.
+
+This logic is not novel in industrial inspection. Automated optical inspection systems in electronics manufacturing have long been co-designed so that mechanical handling---conveyors, positioning fixtures, rotation stages---provides the visual access that the imaging system requires \cite{Newman1995}. The contribution of this research is to adapt and develop that logic for agricultural grain assessment, a context that introduces additional complications: highly variable grain morphology, a bulk sample (rather than individually fixtured components), operational environments with dust and time pressure, and the need for the mechanical handling system to be fast, gentle, and reliable across thousands of cycles.
+
+%----------------------------------------------------------------------------------------
+\section{Summary}
+%----------------------------------------------------------------------------------------
+
+Reading through this body of work clarified the research problem at a level of precision that the fieldwork alone could not provide. Deep learning models are demonstrably capable of grain classification when the imaging conditions are favourable. The problem is that industrial procurement conditions are not favourable, and the gap between the laboratory settings of published evaluations and the warehouse floor is wide enough to be decisive. The single-view assumption and the density-related failure modes of current detectors both point toward the same architectural intervention: design the hardware to improve observability before asking the software to classify. Chapter~\ref{Chapter4} describes how that principle was translated into an actual design process.

@@ -1,0 +1,53 @@
+% Chapter 9 --- Conclusion and Future Work
+
+\chapter{Conclusion and Future Work}\doublespacing
+\label{Chapter9}
+\lhead{Chapter IX. \emph{Conclusion and Future Work}}
+
+%----------------------------------------------------------------------------------------
+\section{Summary of Findings}
+%----------------------------------------------------------------------------------------
+
+The problem this thesis addressed was stated in operational terms at the outset: a quality assessment cycle that takes sixty minutes is a bottleneck. But the more important finding was not about speed. It was about the nature of the problem that made speed difficult to achieve without sacrificing accuracy---and why that problem had a design solution rather than simply an algorithmic one.
+
+Dense grain samples do not cooperate with overhead cameras. They pile up, obscure each other, and present their surfaces in orientations that happen to hide the diagnostic features most relevant to the category calls that matter most. No model, however well-trained, can classify what it cannot see. This is not a gap in the current state of computer vision; it is a consequence of physics. The research contribution of Drishti is the recognition that the right response to this constraint is not to build a better model but to build a system that ensures the model is never asked to classify from hidden evidence.
+
+Three specific findings support this claim. First, the high-density packing of a 100-gram sample---approximately 2,800 grain entities---creates occlusion that purely software-based approaches cannot reliably resolve, and any system that does not address this physically will produce estimates with an uncharacterisable bias in the direction of over-representing whatever happened to land on the surface. Second, staggered solenoid actuation ($T_A$ through $T_D$ at 50\,ms offsets) provides effective dispersion and orientation diversity across the image sequence; vibration, the more obvious alternative, does not, for reasons that took several experimental cycles to understand. Third, the hardware-software co-design approach---shaping the physical observability of the sample to support tractable inference---enabled a cycle time reduction compatible with operational requirements while producing outputs that ITC food analysts judged to be consistent with their own assessments of the same samples.
+
+%----------------------------------------------------------------------------------------
+\section{Contribution to Industrial Design Practice}
+%----------------------------------------------------------------------------------------
+
+This thesis is an Industrial Design thesis, not a machine learning thesis. The distinction is worth spelling out. The technical contributions---the solenoid timing logic, the calibration pipeline, the server-client deployment architecture---are important, but they are in service of a design argument. That argument is that the way a device structures the physical conditions of observation is as much an engineering decision as the algorithm running inside it, and that Industrial Design is a discipline with the right tools to make that decision well.
+
+Two transferable design patterns emerge from this work for practitioners designing AI-integrated industrial devices.
+
+The first is \textbf{Active Vision}: the deliberate engineering of physical conditions to improve the quality of visual information entering an inference system \cite{Aloimonos1988}. In Drishti, this means the solenoid actuation mechanism, the dual-illumination optics, the fixed white-balance calibration, and the frame-sequence capture strategy are not separate features---they are a single integrated strategy for giving the model a better problem to solve. This pattern is transferable to any inspection context where the natural presentation of the subject is unfavourable for the imaging geometry.
+
+The second is \textbf{Human-Centred AI at decision interfaces}: the principle that automation should be applied to the part of a decision where it is most reliable, and human judgement should be preserved at the part where it is most valuable \cite{Shneiderman2020}. The Admin Review mechanism, which holds near-threshold results for expert consideration rather than resolving them automatically, is an expression of this. It is not a hedge against the system's accuracy; it is an acknowledgement that some decisions carry enough consequence that the confidence threshold for automated resolution should be higher than for routine clearances.
+
+%----------------------------------------------------------------------------------------
+\section{Limitations and Future Work}
+%----------------------------------------------------------------------------------------
+
+The limitations of this research are specific enough to be stated plainly rather than in the conventional register of academic hedging.
+
+The Bangalore validation was an expert demonstration, not a longitudinal deployment. It could establish that the device worked as intended and that experienced evaluators found its outputs plausible; it could not establish how the system performs across the seasonal and regional variation in wheat quality, variety mix, and supply-chain handling practices that characterises ITC's network over a full procurement season. That validation requires the multi-site field trials scheduled for completion after the time of writing.
+
+The training dataset, while domain-specific and acquisition-matched to the device, was finite in defect diversity. Edge-case defect presentations---unusual adulteration patterns, damage signatures from atypical handling conditions, morphologies from wheat varieties not yet represented in training---may produce lower-confidence or incorrect classifications. Understanding the distribution of such failures is only possible at scale.
+
+Three directions for future work are identified as most productive:
+
+\textbf{Large-scale field validation:} Complete multi-site trials and use the resulting error distribution to identify the specific failure modes that warrant targeted model refinement. The goal is not simply to improve aggregate accuracy but to understand where the system fails and whether those failures are systematic or random.
+
+\textbf{Extension to adjacent commodities:} The hardware-software co-design framework developed for wheat is not wheat-specific. Rice, pulses, coffee beans, and spices all involve dense-entity inspection problems with orientation-sensitive quality attributes. The platform's mechanical and optical architecture could be adapted to these domains with commodity-specific dataset development and threshold calibration.
+
+\textbf{Predictive quality analytics:} Sustained deployment at multiple sites will generate a longitudinal record of quality assessment results that has value beyond individual accept/reject decisions. Patterns across vendors, seasons, and storage conditions visible in that record could support predictive models of procurement risk that would be informative at a supply chain planning level rather than only at the point of intake.
+
+%----------------------------------------------------------------------------------------
+\section{Closing Reflection}
+%----------------------------------------------------------------------------------------
+
+The most experienced wheat assessors at ITC's procurement sites are doing something genuinely impressive: reading subtle morphological cues from thousands of grain entities under time pressure, in difficult conditions, and producing judgements that hold up against subsequent chemical analysis. That expertise took years to develop and exists in a small number of people. It is not robust to shift length, to staff turnover, or to the simple fact that the procurement season is finite and the demand for consistent quality assessment is not.
+
+Drishti was not designed to replace that expertise. It was designed to make consistent, reliable quality assessment available at more points, more reliably, than human expertise alone can sustain. The question of whether it succeeds at that---whether the results produced by the device are trustworthy enough to underpin procurement decisions across a full operating season---is a question that the field trials will answer. What the work in this thesis established is that the design direction is viable, and that the specific constraints of the problem point toward a class of solution that has not previously been applied to this context. That is, at least, a beginning.

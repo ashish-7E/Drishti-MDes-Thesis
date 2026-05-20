@@ -1,0 +1,105 @@
+% Chapter 4 --- Design Methodology and Iterative Prototyping
+
+\chapter{Design Methodology and Iterative Prototyping}\doublespacing
+\label{Chapter4}
+\lhead{Chapter IV. \emph{Design Methodology and Iterative Prototyping}}
+
+%----------------------------------------------------------------------------------------
+\section{Preliminary Visual Analysis and Colour Theory}
+%----------------------------------------------------------------------------------------
+
+The temptation, when approaching an image classification problem, is to begin with a dataset and a model. This research deliberately began earlier: with grain, a light source, and the question of what makes one category visually distinguishable from another.
+
+A structured visual analysis was conducted across all twelve target categories using physical grain specimens supplied by ITC's quality team. The working question was specific: \textit{which visual cues do experienced assessors actually use when they make a category call, and can controlled illumination make those cues reliably measurable by a camera?} This is not a trivial question. An expert looking at a \textit{Black Tip} specimen is not reading off a single feature; they are synthesising several cues---tip darkening, kernel geometry, surface lustre---that may or may not be visible in a photograph depending on how the grain is lit.
+
+Early experiments used coloured chart-paper backgrounds and varied light angles. The findings were instructive but inconclusive. Warm amber tones improved the contrast between healthy \textit{Lokwan} specimens and the darker \textit{Kernel Burnt} category; cooler backgrounds improved boundary definition useful for segmentation. The problem was that no single background setting performed consistently across all twelve categories and the full range of wheat varieties. What helped \textit{Black Tip} detection degraded \textit{Chaff} boundary contrast; what worked for \textit{Sharbati} did not generalise to \textit{Durum}.
+
+This observation prompted the first significant design decision: abandon static backgrounds and replace them with a programmable, active substrate. An LCD panel positioned beneath a transparent imaging surface---drawing on the active background imaging approach described by \cite{ElMasry2019}---allowed the background colour to be set programmatically on a per-variety basis. This dual-illumination architecture, combining a top-mounted RGB ring light with a variable LCD background, became the basis of everything that followed.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{BY - yellow from bottom only - for segmentation.jpg}
+        \caption{BY}
+        \label{fig:colour_by}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{WB - white from top only - for classiication.jpg}
+        \caption{WB}
+        \label{fig:colour_wb}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.30\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{BR - Red from bottom only - for multispectral classification.jpg}
+        \caption{BR}
+        \label{fig:colour_br}
+    \end{subfigure}
+    \caption{Final illumination configurations selected for the dual-illumination system: (a)~BY yellow backlight for grain boundary segmentation, (b)~WB white top-light for general classification, and (c)~BR red backlight for multispectral defect classification.}
+    \label{fig:figure4_1}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+\section{Prototype I: Low-Fidelity Proof of Concept}
+%----------------------------------------------------------------------------------------
+
+The first prototype was kept deliberately simple. A 3D-printed enclosure, a small LCD panel as the active background, WS2812B top illumination, and a Raspberry Pi 5 for control and capture. The Raspberry Pi 5 was chosen for its combination of computational headroom, flexible GPIO integration, and practical deployment cost---not as a permanent choice, but as a development platform that would remain in the final system if it proved sufficient.
+
+The objective at this stage was narrow: demonstrate that the dual-illumination hypothesis held in practice. It did. The combined top-light and programmable backlight improved visual separation between categories in ways that static backgrounds had not. Early-stage \textit{Infested} specimens, which share significant surface colour with healthy grain under flat white light, became more clearly distinguishable against certain background settings. \textit{Potia}, with its characteristically lighter and less-developed kernel surface, benefited from a background that enhanced surface contrast.
+
+These results were encouraging. What Prototype I could not address was the core operational requirement: consistent assessment of a full 100-gram sample. The small enclosure handled only a fraction of that volume, which meant that scaling was not a simple dimensional exercise but a problem that would need its own design attention.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{3d printed prototype.png}
+    \caption{Prototype~I: low-fidelity 3D-printed enclosure validating the dual-illumination hypothesis.}
+    \label{fig:figure4_2}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+\section{Prototype II: Scaling to Industrial Volume and the Density Problem}
+%----------------------------------------------------------------------------------------
+
+Prototype II was a structural redesign. The 3D-printed chassis was replaced with aluminium extrusion to provide the rigidity, durability, and dust tolerance needed for a warehouse environment. The imaging surface was enlarged to accommodate a full 100-gram sample, and the illumination system was scaled proportionally.
+
+At this point, something became unavoidably clear. A 100-gram wheat sample does not spread into a clean monolayer when loaded onto a flat surface. It piles up. At approximately 2,800 entities in a constrained area, grains stack on and against each other, with many specimens entirely hidden from the overhead camera at any given moment. Running inference on images from Prototype II under full sample loading produced exactly the results that the literature had warned about: undercounting, merged detections, and poor classification confidence on occluded specimens.
+
+It would be easy, in retrospect, to treat this as a straightforward failure. At the time, it felt more like a clarification. The problem was not that the model was insufficiently powerful; it was that the physical observability of the sample was structurally inadequate. No amount of architectural improvement to the vision model would help a detector classify a grain that was physically covered by two other grains. The constraint was in the imaging geometry, not the algorithm.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{aluminium prototype.jpg}
+        \caption{Aluminium extrusion chassis of Prototype~II.}
+        \label{fig:aluminium_chassis}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{aluminium prototype sample image.jpg}
+        \caption{100-gram sample exhibiting high-density clumping.}
+        \label{fig:aluminium_sample}
+    \end{subfigure}
+    \caption{Prototype~II at industrial scale, showing the high-density occlusion problem that redirected the subsequent design brief.}
+    \label{fig:figure4_3}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+\section{The Hardware-Software Co-Design Pivot}
+%----------------------------------------------------------------------------------------
+
+The design brief changed after Prototype II. The question shifted from ``how do we detect occluded grains?'' to ``how do we ensure grains are not occluded when we capture them?''
+
+This reframing is the operational expression of the hardware-software co-design principle \cite{Keutzer2000}. Rather than asking the software to solve a problem that the hardware creates, redesign the hardware so that the software's task becomes tractable. In this case, that meant developing a mechanical system capable of dispersing a 100-gram sample---separating the grain bed so that each entity could be imaged in relative isolation across a sequence of frames---while rotating specimen orientations to address the single-view occlusion problem identified in the literature review.
+
+The brief that emerged for the next design phase was demanding. The dispersion mechanism needed to be repeatable (same result across hundreds of cycles), non-damaging to grain (which would compromise the quality assessment it was meant to support), compatible with fine agricultural dust, and fast enough to keep total cycle time under five minutes. Chapter~\ref{Chapter5} describes the series of mechanical experiments that led to a solution that met these requirements.
+
+%----------------------------------------------------------------------------------------
+\section{Summary}
+%----------------------------------------------------------------------------------------
+
+The design process described in this chapter is characterised by what Cross \cite{Cross2011} calls ``making as inquiry''---the use of physical prototypes not as demonstrations of a known solution, but as instruments for discovering what the actual problem is. Prototype I confirmed the dual-illumination hypothesis. Prototype II revealed that the illumination question, while important, was secondary to the physical observability question. That realisation, uncomfortable as it was to reach mid-project, directed the remainder of the research toward the mechanical and computational innovations described in the chapters that follow.

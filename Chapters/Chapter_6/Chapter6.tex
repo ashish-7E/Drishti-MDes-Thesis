@@ -1,0 +1,53 @@
+% Chapter 6 --- Computational Architecture
+
+\chapter{The Computational Architecture: From Pixel to Procurement Decision}\doublespacing
+\label{Chapter6}
+\lhead{Chapter VI. \emph{Computational Architecture}}
+
+%----------------------------------------------------------------------------------------
+\section{Optoelectrical Parameter Optimisation}
+%----------------------------------------------------------------------------------------
+
+Mechanical dispersion addresses the visibility problem, but it does not address the colour fidelity problem. Several of the most consequential classification decisions in this system depend on subtle chromatic cues: the specific grey-brown surface tone that distinguishes \textit{Kernel Burnt} from dark-variety \textit{Pure Wheat}; the slight teal discolouration near a kernel tip that marks early \textit{Black Tip}; the surface sheen of \textit{Infested} grain compared with the matte surface of a healthy specimen of the same variety. These distinctions exist in the physical sample. Whether they survive the imaging pipeline depends on the calibration choices made upstream.
+
+Auto White Balance (AWB) turned out to be the primary source of instability. AWB was designed for consumer photography, where the goal is perceptually natural colour rendering---suppressing green casts under fluorescent light, correcting the warmth of incandescent illumination. In this application, that correction is counterproductive. The very chromatic signals that AWB was smoothing out were the diagnostic cues that the model needed to read. When AWB was active, the soft amber tinge that distinguished two categories under the same illumination was absorbed into the white-balance correction and presented to the model as a near-uniform surface.
+
+The fix was straightforward once the problem was understood: disable AWB and replace it with a fixed white-balance matrix calibrated under Drishti's specific illumination conditions using a standard colour reference chart. Shutter speed was tuned to balance motion suppression during post-actuation grain settling against exposure level. WS2812B LED output was adjusted spatially to reduce the specular reflections that were obscuring surface texture on glossy kernel surfaces \cite{LiWheat2024, ElMasry2019}. The result was a stable and repeatable optical signal: the same grain photographed in ten successive frames should produce images that are chromatically consistent enough for the model's class boundary predictions to be reliable.
+
+%----------------------------------------------------------------------------------------
+\section{Dataset Acquisition and ML Model Training}
+%----------------------------------------------------------------------------------------
+
+% Note to author: Specific model architecture details, accuracy figures, and training
+% hyperparameters should be completed once final training runs are concluded.
+
+A question that is easy to underestimate in applied machine learning is whether the training data actually represents the inference conditions. Public grain datasets are visually diverse and well-curated, but they do not represent ITC's specific wheat varieties, Drishti's illumination profile, or the partially dispersed, multi-orientation sample states that the device produces. Training on a generic dataset and deploying in a specific physical system is a form of dataset shift that reliably degrades performance in ways that do not announce themselves clearly \cite{QuinoneroCandela2009}. The degradation tends to be confident misclassification rather than uncertain prediction, which is the more dangerous failure mode.
+
+The decision was therefore made to build a domain-specific dataset from scratch, capturing images under the same optical and mechanical pipeline described in Chapters~\ref{Chapter4} and~\ref{Chapter5}. Grain specimens were annotated across all twelve categories, with particular attention to the confusable pairs that fieldwork had identified as the most error-prone in manual assessment: \textit{Kernel Burnt} versus dark-variety \textit{Pure Wheat}, early \textit{Infested} versus \textit{Broken}, and \textit{Potia} versus immature \textit{Pure Wheat}.
+
+Instance segmentation was selected as the model task rather than bounding-box detection. The practical motivation was direct: $W/W\%$ calculation requires area estimation per category, and pixel-level masks produce more accurate area measurements than bounding boxes, which overestimate the occupied area systematically when applied to irregularly shaped grain bodies. An approach optimised for counts rather than areas would have introduced a calculable but controllable bias; this approach avoids it.
+
+%----------------------------------------------------------------------------------------
+\section{Edge-to-Server Software Architecture}
+%----------------------------------------------------------------------------------------
+
+\subsection{System Architecture Overview}
+
+Once the calibration and model choices were made, the deployment question became: where does the inference computation actually run? The Raspberry Pi 5 handles actuation control, GPIO timing, and image capture efficiently. It is not well-suited as the primary host for production-scale instance segmentation inference at the throughput needed to process a multi-frame capture sequence within the five-minute cycle target.
+
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.9\textwidth]{Drishti Hardware Architecture.svg}
+    \caption{Drishti system architecture: the Raspberry Pi 5 edge node handles physical actuation and image capture; the central inference server handles segmentation and returns per-category $W/W\%$ results.}
+    \label{fig:hardware_architecture}
+\end{figure}
+
+The architecture adopted is a server-client split. The Raspberry Pi 5 acts as the edge node, responsible for actuation sequencing, image capture at calibrated parameters, lightweight preprocessing (resizing, calibration transform application, and frame selection), and local user interface rendering. Preprocessed frames are transmitted over a local network connection to a central inference service. The inference service, exposed through a FastAPI endpoint, runs the instance segmentation model and returns per-category counts and derived $W/W\%$ values. These are rendered on the Raspberry Pi 5 display within the sub-five-minute window.
+
+This split has practical implications beyond performance. Running inference on a managed server allows model updates to be deployed without physical access to field devices; a versioned model container can be pushed to the inference server centrally and all connected edge nodes pick up the update automatically on their next job submission. Docker containerisation was chosen for the inference service precisely because ITC sites have heterogeneous IT environments, and a containerised inference service behaves consistently regardless of the host operating system or pre-installed software state \cite{Merkel2014}.
+
+%----------------------------------------------------------------------------------------
+\section{Summary}
+%----------------------------------------------------------------------------------------
+
+Looking back at the choices made in this chapter, what is most striking is how directly each one was shaped by something encountered in the field rather than derived from first principles. AWB suppression came from observing that automatic colour corrections were erasing diagnostic information. The domain-specific dataset came from recognising that the device's physical behaviour was not approximated by any existing dataset. The server-client split came from the practical realities of computing on embedded hardware at the required throughput. None of these were obvious in advance; they were each arrived at by testing a simpler assumption and finding it insufficient. Chapter~\ref{Chapter7} turns to the question of how this system presents itself to the people who use it.

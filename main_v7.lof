@@ -1,0 +1,29 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces A typical 100-gram wheat grain sample spread on a sorting table.}}{1}{figure.caption.14}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces The twelve distinct grain and impurity categories that must be identified during the manual assessment of a sample.}}{3}{figure.caption.16}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Initial checks during periphery testing: (a) moisture measurement and (b) Hectolitre weight for variety verification.}}{10}{figure.caption.26}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Master sample collection from \textit {boris} at godown.}}{11}{figure.caption.29}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Final illumination configurations selected for the dual-illumination system: (a)~BY yellow backlight for grain boundary segmentation, (b)~WB white top-light for general classification, and (c)~BR red backlight for multispectral defect classification.}}{16}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Prototype~I: low-fidelity 3D-printed enclosure validating the dual-illumination hypothesis.}}{18}{figure.caption.37}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Prototype~II at industrial scale, showing the high-density occlusion problem that redirected the subsequent design brief.}}{19}{figure.caption.39}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces The 100-gram grain sample before and after a single solenoid actuation cycle, demonstrating the transition from dense occlusion to measurable grain isolation and orientation diversity.}}{25}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Physical assembly sequence of the final prototype. (a)~Custom PCB for solenoid pulse timing. (b--d)~Progressive chassis and electronics assembly. (e)~Completed device prepared for deployment.}}{28}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces CAD exploded view of the Drishti device, showing the vertical component stack: optics module, electromagnetic actuation array, and control electronics within the aluminium chassis.}}{29}{figure.caption.52}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Drishti system architecture: the Raspberry Pi 5 edge node handles physical actuation and image capture; the central inference server handles segmentation and returns per-category $W/W\%$ results.}}{33}{figure.caption.59}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces The finalised Drishti device with the hole-fitting grain tray, positioned for sample loading.}}{37}{figure.caption.65}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces The Home Screen provides a clear, distraction-free starting point for the operator.}}{39}{figure.caption.67}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Step 1: Sample Insertion prompt, ensuring the operator has correctly placed the tray before proceeding.}}{40}{figure.caption.68}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Step 3: Real-time optoelectrical calibration feedback.}}{40}{figure.caption.69}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Step 4: Image capture sequence, communicating progress as multiple frames are acquired.}}{41}{figure.caption.70}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Step 5: The final Quality Report, using threshold-relative visualisations for immediate interpretability.}}{42}{figure.caption.71}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Flowchart comparing classification accuracy and variance across manual inspection, an open environment camera, and the Drishti device over 10 testcases.}}{48}{figure.caption.78}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Comparison of assessment times between manual human inspection and the automated Drishti device across various GPU server configurations.}}{49}{figure.caption.80}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

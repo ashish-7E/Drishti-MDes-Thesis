@@ -1,0 +1,64 @@
+% Appendix B — Solenoid Timing and GPIO Configuration
+
+\chapter{Solenoid Actuation Parameters and GPIO Configuration}
+
+\label{AppendixB}
+
+\lhead{Appendix B. \emph{Solenoid Parameters}}
+
+This appendix documents the hardware configuration parameters for the electromagnetic solenoid actuation system. These values represent the empirically determined optima identified through the iterative testing programme described in Chapter~\ref{Chapter5}.
+
+\vspace{1em}
+
+\begin{table}[h!]
+\centering
+\caption{Solenoid actuation parameters for the staggered pulse activation sequence.}
+\label{tab:solenoid_params}
+\begin{tabular}{lll}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Notes} \\
+\midrule
+Number of solenoids           & 4              & Mounted at cardinal midpoints of grain plate. \\
+Inter-solenoid delay ($\Delta t$) & 50 ms      & Empirical optimum for shearing effect. \\
+Activation duration per solenoid  & 500 ms     & Measured from individual trigger point. \\
+Full cycle duration           & 650 ms         & From $T_A$ trigger to $T_D$ deactivation. \\
+Cycles per inspection         & Variable       & Image capture interleaved between cycles. \\
+GPIO library                  & RPi.GPIO       & Raspberry Pi 5, Python implementation. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{1em}
+
+\noindent The staggered activation sequence follows the timing model defined in Chapter~\ref{Chapter5}:
+
+\begin{align}
+    T_A &= t \nonumber \\
+    T_B &= t + 50\,\text{ms} \nonumber \\
+    T_C &= t + 100\,\text{ms} \nonumber \\
+    T_D &= t + 150\,\text{ms} \nonumber
+\end{align}
+
+\vspace{1em}
+
+\begin{table}[h!]
+\centering
+\caption{Camera and illumination parameters (static configuration, AWB disabled).}
+\label{tab:camera_params}
+\begin{tabular}{lll}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{Notes} \\
+\midrule
+Camera module         & Raspberry Pi HQ Camera   & 12.3 MP Sony IMX477 sensor. \\
+Lens                  & 16mm telephoto            & Chosen for working distance to grain plane. \\
+Shutter speed         & [To be specified]         & Set to eliminate motion blur during actuation. \\
+White balance         & Fixed matrix (manual)     & Calibrated against colour reference chart. \\
+Top illumination      & WS2812B RGB LED array     & Addressable; intensity tuned per variant. \\
+Bottom illumination   & LCD backlight (dynamic)   & Colour programmable per wheat category. \\
+Lux level (surface)  & [To be specified]         & Tuned to minimise specular highlights. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vspace{1em}
+\noindent Parameters marked ``[To be specified]'' are to be completed following the finalisation of the imaging calibration protocol at ITC field sites.

@@ -1,0 +1,213 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Reardon et~al.(2009)Reardon, Barrett, Berdegu\'{e}, and
+  Swinnen]{Reardon2009}
+Thomas Reardon, Christopher~B. Barrett, Julio~A. Berdegu\'{e}, and Johan F.~M.
+  Swinnen.
+\newblock Agrifood industry transformation and small farmers in developing
+  countries.
+\newblock \emph{World Development}, 37\penalty0 (11):\penalty0 1717--1727,
+  2009.
+\newblock \doi{10.1016/j.worlddev.2008.08.023}.
+
+\bibitem[Holtzblatt and Beyer(1998)]{Holtzblatt1998}
+Karen Holtzblatt and Hugh Beyer.
+\newblock \emph{Contextual Design: Defining Customer-Centered Systems}.
+\newblock Morgan Kaufmann, San Francisco, CA, 1998.
+
+\bibitem[Polanyi(1966)]{Polanyi1966}
+Michael Polanyi.
+\newblock \emph{The Tacit Dimension}.
+\newblock Doubleday, New York, 1966.
+
+\bibitem[Parasuraman and Riley(1997)]{Parasuraman1997}
+Raja Parasuraman and Victor Riley.
+\newblock Humans and automation: Use, misuse, disuse, abuse.
+\newblock \emph{Human Factors}, 39\penalty0 (2):\penalty0 230--253, 1997.
+\newblock \doi{10.1518/001872097778543886}.
+
+\bibitem[Lingwal et~al.(2021)Lingwal, Bhatia, and Tomer]{Lingwal2021}
+Sunil Lingwal, Karan~Kishore Bhatia, and M.~S. Tomer.
+\newblock Image-based wheat grain classification using convolutional neural
+  network.
+\newblock \emph{Multimedia Tools and Applications}, 80:\penalty0 35441--35465,
+  2021.
+\newblock \doi{10.1007/s11042-020-10174-3}.
+
+\bibitem[Laabassi et~al.(2021)Laabassi, Belarbi, Mahmoudi,
+  et~al.]{Laabassi2021}
+Khaled Laabassi, Mohammed~Amine Belarbi, Said Mahmoudi, et~al.
+\newblock Wheat varieties identification based on a deep learning approach.
+\newblock \emph{Journal of the Saudi Society of Agricultural Sciences}, 2021.
+\newblock \doi{10.1016/j.jssas.2021.01.003}.
+
+\bibitem[Yasar et~al.(2024)Yasar, Golcuk, and Sari]{Yasar2024}
+Ahmet Yasar, Argun Golcuk, and O.~F. Sari.
+\newblock Classification of bread wheat varieties with a combination of deep
+  learning approach.
+\newblock \emph{European Food Research and Technology}, 250\penalty0
+  (1):\penalty0 181--189, 2024.
+\newblock \doi{10.1007/s00217-023-04375-x}.
+
+\bibitem[Hussain(2024)]{YOLOReview2024}
+Muhammad Hussain.
+\newblock The {YOLO} framework: A comprehensive review of evolution,
+  applications, and benchmarks in object detection.
+\newblock \emph{Preprints.org}, 2024.
+\newblock \doi{10.20944/preprints202410.1785.v1}.
+
+\bibitem[Guo et~al.(2025)Guo, Wu, You, et~al.]{YOLODense2025}
+Yubin Guo, Zhipeng Wu, Baihao You, et~al.
+\newblock {YOLO-SDD}: An effective single-class detection method for dense
+  livestock production.
+\newblock \emph{Animals}, 15\penalty0 (9):\penalty0 1205, 2025.
+\newblock \doi{10.3390/ani15091205}.
+
+\bibitem[Xu et~al.(2023)Xu, Geng, Gao, et~al.]{Xu2023}
+Xiaohu Xu, Qiao Geng, Fengzhi Gao, et~al.
+\newblock Segmentation and counting of wheat spike grains based on deep
+  learning and textural feature.
+\newblock \emph{Plant Methods}, 19:\penalty0 77, 2023.
+\newblock \doi{10.1186/s13007-023-01062-6}.
+
+\bibitem[Shen et~al.(2023)Shen, Zhen, and Li]{ShenUnsound2023}
+Rui Shen, Tao Zhen, and Zhikun Li.
+\newblock Segmentation of unsound wheat kernels based on improved mask {RCNN}.
+\newblock \emph{Sensors}, 23\penalty0 (6):\penalty0 3379, 2023.
+\newblock \doi{10.3390/s23063379}.
+
+\bibitem[Li et~al.(2024)Li, Tian, Huang, He, Liang, and Hu]{LiWheat2024}
+Jiaxin Li, Jinghao Tian, Yi~Huang, Kun He, Yao Liang, and Xing Hu.
+\newblock Hyperspectral imaging combined with dual-channel deep learning
+  feature fusion model for fast and non-destructive recognition of brew wheat
+  varieties.
+\newblock \emph{Journal of Food Composition and Analysis}, 125:\penalty0
+  105785, 2024.
+\newblock \doi{10.1016/j.jfca.2023.105785}.
+
+\bibitem[ElMasry et~al.(2019)ElMasry, Mandour, Wagner, Demilly, Verdier, Belin,
+  and Rousseau]{ElMasry2019}
+Gamal ElMasry, Nabil Mandour, Marc-Heleno Wagner, Didier Demilly, Jo\"{e}l
+  Verdier, Emmanuelle Belin, and David Rousseau.
+\newblock Utilization of computer vision and multispectral imaging for
+  classification of cowpea ({Vigna unguiculata}) seeds.
+\newblock \emph{Plant Methods}, 15:\penalty0 24, 2019.
+\newblock \doi{10.1186/s13007-019-0411-2}.
+
+\bibitem[Keutzer et~al.(2000)Keutzer, Newton, Rabaey, and
+  Sangiovanni-Vincentelli]{Keutzer2000}
+Kurt Keutzer, A.~Richard Newton, Jan~M. Rabaey, and Alberto
+  Sangiovanni-Vincentelli.
+\newblock System-level design: Orthogonalization of concerns and platform-based
+  design.
+\newblock \emph{IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 19\penalty0 (12):\penalty0 1523--1543, 2000.
+\newblock \doi{10.1109/43.898828}.
+
+\bibitem[Newman and Jain(1995)]{Newman1995}
+Timothy~S. Newman and Anil~K. Jain.
+\newblock A survey of automated visual inspection.
+\newblock \emph{Computer Vision and Image Understanding}, 61\penalty0
+  (2):\penalty0 231--262, 1995.
+\newblock \doi{10.1006/cviu.1995.1017}.
+
+\bibitem[Cross(2011)]{Cross2011}
+Nigel Cross.
+\newblock \emph{Design Thinking: Understanding How Designers Think and Work}.
+\newblock Berg Publishers, Oxford, 2011.
+\newblock \doi{10.5040/9781474293884}.
+
+\bibitem[Rosato et~al.(1987)Rosato, Strandburg, Prinz, and
+  Swendsen]{Rosato1987}
+Anthony Rosato, Katherine~J. Strandburg, Franz Prinz, and Robert~H. Swendsen.
+\newblock Why the brazil nuts are on top: Size segregation of particulate
+  matter by shaking.
+\newblock \emph{Physical Review Letters}, 58\penalty0 (10):\penalty0
+  1038--1040, 1987.
+\newblock \doi{10.1103/PhysRevLett.58.1038}.
+
+\bibitem[Ottino and Khakhar(2000)]{Ottino2000}
+Julio~M. Ottino and Devang~V. Khakhar.
+\newblock Mixing and segregation of granular materials.
+\newblock \emph{Annual Review of Fluid Mechanics}, 32\penalty0 (1):\penalty0
+  55--91, 2000.
+\newblock \doi{10.1146/annurev.fluid.32.1.55}.
+
+\bibitem[Windows-Yule et~al.(2021)]{SizeSegregation2021}
+Christopher R.~K. Windows-Yule et~al.
+\newblock Size segregation of irregular granular materials captured by
+  time-resolved {3D} imaging.
+\newblock \emph{Scientific Reports}, 11:\penalty0 8810, 2021.
+\newblock \doi{10.1038/s41598-021-87280-1}.
+
+\bibitem[Qui\~{n}onero Candela et~al.(2009)Qui\~{n}onero Candela, Sugiyama,
+  Schwaighofer, and Lawrence]{QuinoneroCandela2009}
+Joaquin Qui\~{n}onero Candela, Masashi Sugiyama, Anton Schwaighofer, and
+  Neil~D. Lawrence, editors.
+\newblock \emph{Dataset Shift in Machine Learning}.
+\newblock MIT Press, Cambridge, MA, 2009.
+\newblock \doi{10.7551/mitpress/9780262170055.001.0001}.
+
+\bibitem[Merkel(2014)]{Merkel2014}
+Dirk Merkel.
+\newblock Docker: Lightweight {Linux} containers for consistent development and
+  deployment.
+\newblock \emph{Linux Journal}, 2014\penalty0 (239), 2014.
+\newblock URL
+  \url{https://www.linuxjournal.com/content/docker-lightweight-linux-containers-consistent-development-and-deployment}.
+
+\bibitem[Stanton et~al.(2005)Stanton, Salmon, Walker, Baber, and
+  Jenkins]{Stanton2005}
+Neville~A. Stanton, Paul~M. Salmon, Guy~H. Walker, Chris Baber, and Daniel~P.
+  Jenkins.
+\newblock \emph{Human Factors Methods: A Practical Guide for Engineering and
+  Design}.
+\newblock Ashgate, Aldershot, 2005.
+\newblock \doi{10.4324/9781315577920}.
+
+\bibitem[Norman(2013)]{Norman2013}
+Donald~A. Norman.
+\newblock \emph{The Design of Everyday Things: Revised and Expanded Edition}.
+\newblock Basic Books, New York, 2013.
+
+\bibitem[Tufte(2001)]{Tufte2001}
+Edward~R. Tufte.
+\newblock \emph{The Visual Display of Quantitative Information}.
+\newblock Graphics Press, Cheshire, CT, 2nd edition, 2001.
+
+\bibitem[Shneiderman et~al.(2016)Shneiderman, Plaisant, Cohen, Jacobs, and
+  Elmqvist]{Shneiderman2016}
+Ben Shneiderman, Catherine Plaisant, Maxine Cohen, Steven Jacobs, and Niklas
+  Elmqvist.
+\newblock \emph{Designing the User Interface: Strategies for Effective
+  Human-Computer Interaction}.
+\newblock Pearson, Boston, MA, 6th edition, 2016.
+
+\bibitem[Nielsen(1994)]{Nielsen1994}
+Jakob Nielsen.
+\newblock Heuristic evaluation.
+\newblock In Jakob Nielsen and Robert~L. Mack, editors, \emph{Usability
+  Inspection Methods}, pages 25--62. John Wiley \& Sons, New York, 1994.
+
+\bibitem[Aloimonos et~al.(1988)Aloimonos, Weiss, and
+  Bandyopadhyay]{Aloimonos1988}
+John Aloimonos, Isaac Weiss, and Amit Bandyopadhyay.
+\newblock Active vision.
+\newblock \emph{International Journal of Computer Vision}, 1\penalty0
+  (4):\penalty0 333--356, 1988.
+\newblock \doi{10.1007/BF00133571}.
+
+\bibitem[Shneiderman(2020)]{Shneiderman2020}
+Ben Shneiderman.
+\newblock Human-centered artificial intelligence: Reliable, safe \&
+  trustworthy.
+\newblock \emph{International Journal of Human--Computer Interaction},
+  36\penalty0 (6):\penalty0 495--504, 2020.
+\newblock \doi{10.1080/10447318.2020.1741118}.
+
+\end{thebibliography}
