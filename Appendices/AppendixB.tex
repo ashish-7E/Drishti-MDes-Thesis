@@ -14,16 +14,16 @@ This appendix documents the hardware configuration parameters for the electromag
 \centering
 \caption{Solenoid actuation parameters for the staggered pulse activation sequence.}
 \label{tab:solenoid_params}
-\begin{tabular}{lll}
+\begin{tabular}{p{5.5cm} p{3cm} p{5cm}}
 \toprule
 \textbf{Parameter} & \textbf{Value} & \textbf{Notes} \\
 \midrule
-Number of solenoids           & 4              & Mounted at cardinal midpoints of grain plate. \\
-Inter-solenoid delay ($\Delta t$) & 50 ms      & Empirical optimum for shearing effect. \\
-Activation duration per solenoid  & 500 ms     & Measured from individual trigger point. \\
-Full cycle duration           & 650 ms         & From $T_A$ trigger to $T_D$ deactivation. \\
-Cycles per inspection         & Variable       & Image capture interleaved between cycles. \\
-GPIO library                  & RPi.GPIO       & Raspberry Pi 5, Python implementation. \\
+Number of solenoids            & 4          & Mounted at cardinal midpoints of grain plate. \\
+Inter-solenoid delay ($\Delta t$) & 50 ms   & Empirical optimum for shearing effect. \\
+Activation duration per solenoid  & 500 ms  & Measured from individual trigger point. \\
+Full cycle duration            & 650 ms     & From $T_A$ trigger to $T_D$ deactivation. \\
+Cycles per inspection          & Variable   & Image capture interleaved between cycles. \\
+GPIO library                   & RPi.GPIO   & Raspberry Pi 5, Python implementation. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -45,17 +45,17 @@ GPIO library                  & RPi.GPIO       & Raspberry Pi 5, Python implemen
 \centering
 \caption{Camera and illumination parameters (static configuration, AWB disabled).}
 \label{tab:camera_params}
-\begin{tabular}{lll}
+\begin{tabular}{p{4.5cm} p{4cm} p{5cm}}
 \toprule
 \textbf{Parameter} & \textbf{Value} & \textbf{Notes} \\
 \midrule
-Camera module         & Raspberry Pi HQ Camera   & 12.3 MP Sony IMX477 sensor. \\
-Lens                  & 16mm telephoto            & Chosen for working distance to grain plane. \\
-Shutter speed         & [To be specified]         & Set to eliminate motion blur during actuation. \\
-White balance         & Fixed matrix (manual)     & Calibrated against colour reference chart. \\
-Top illumination      & WS2812B RGB LED array     & Addressable; intensity tuned per variant. \\
-Bottom illumination   & LCD backlight (dynamic)   & Colour programmable per wheat category. \\
-Lux level (surface)  & [To be specified]         & Tuned to minimise specular highlights. \\
+Camera module        & Raspberry Pi HQ Camera  & 12.3 MP Sony IMX477 sensor. \\
+Lens                 & 16mm telephoto           & Chosen for working distance to grain plane. \\
+Shutter speed        & [To be specified]        & Set to eliminate motion blur during actuation. \\
+White balance        & Fixed matrix (manual)    & Calibrated against colour reference chart. \\
+Top illumination     & WS2812B RGB LED array    & Addressable; intensity tuned per variant. \\
+Bottom illumination  & LCD backlight (dynamic)  & Colour programmable per wheat category. \\
+Lux level (surface) & [To be specified]        & Tuned to minimise specular highlights. \\
 \bottomrule
 \end{tabular}
 \end{table}
