@@ -6,7 +6,7 @@
 
 \lhead{Appendix B. \emph{Solenoid Parameters}}
 
-This appendix documents the hardware configuration parameters for the electromagnetic solenoid actuation system. These values represent the empirically determined optima identified through the iterative testing programme described in Chapter~\ref{Chapter5}.
+This appendix documents the hardware configuration parameters for the electromagnetic solenoid actuation system. These values represent the empirically determined results through the iterative testing programme described in Chapter~\ref{Chapter5}.
 
 \vspace{1em}
 
@@ -51,11 +51,11 @@ GPIO library                   & RPi.GPIO   & Raspberry Pi 5, Python implementat
 \midrule
 Camera module        & Raspberry Pi HQ Camera  & 12.3 MP Sony IMX477 sensor. \\
 Lens                 & 16mm telephoto           & Chosen for working distance to grain plane. \\
-Shutter speed        & [To be specified]        & Set to eliminate motion blur during actuation. \\
+Shutter speed        & 3000        & Set to limit light entering the camera sensor \\
 White balance        & Fixed matrix (manual)    & Calibrated against colour reference chart. \\
-Top illumination     & WS2812B RGB LED array    & Addressable; intensity tuned per variant. \\
-Bottom illumination  & LCD backlight (dynamic)  & Colour programmable per wheat category. \\
-Lux level (surface) & [To be specified]        & Tuned to minimise specular highlights. \\
+Top illumination     & WS2812B RGB LED array    & Addressable and can produce over 16M colours \\
+Bottom illumination  & LCD backlight (dynamic)  & initially used for small prototype \\
+Lux level & [To be specified]        & Tuned to minimise specular highlights. \\
 \bottomrule
 \end{tabular}
 \end{table}
