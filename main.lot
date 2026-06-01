@@ -7,7 +7,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Wheat grain classification categories and indicative $W/W\%$ thresholds as applied in procurement protocols. Specific threshold values are proprietary and represented here in generalised form.}}{43}{table.caption.81}%
+\contentsline {table}{\numberline {A.1}{\ignorespaces Wheat grain classification categories as used in procurement protocols.}}{43}{table.caption.81}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {B.1}{\ignorespaces Solenoid actuation parameters for the staggered pulse activation sequence.}}{44}{table.caption.83}%
 \contentsline {table}{\numberline {B.2}{\ignorespaces Camera and illumination parameters (static configuration, AWB disabled).}}{45}{table.caption.84}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {C.1}{\ignorespaces Design constraints derived from contextual research.}}{47}{table.caption.89}%
+\contentsline {table}{\numberline {C.2}{\ignorespaces Evaluation of imaging geometry options against design constraints.}}{48}{table.caption.94}%
+\contentsline {table}{\numberline {C.3}{\ignorespaces Evaluation of grain dispersion mechanisms against design constraints.}}{49}{table.caption.96}%
+\contentsline {table}{\numberline {C.4}{\ignorespaces Evaluation of illumination configurations against design constraints. C3 and C4 are not applicable to illumination; they are addressed by the dispersion mechanism.}}{50}{table.caption.98}%

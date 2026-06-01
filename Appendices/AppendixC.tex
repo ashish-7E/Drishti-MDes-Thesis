@@ -1,8 +1,110 @@
-% Appendix Template
+% Appendix C — Design Exploration Process
 
-\chapter{APPENDIX CHAPTER TITLE} % Main appendix title
+\chapter{Design Exploration Process}
+\label{AppendixC}
+\lhead{Appendix C. \emph{Design Exploration Process}}
 
-\label{AppendixC} % Change X to a consecutive letter; for referencing this appendix elsewhere, use \ref{AppendixX}
+\doublespacing
 
-\lhead{Appendix C. \emph{APPENDIX CHAPTER TITLE}} % Change X to a consecutive letter; this is for the header on each page - perhaps a shortened title
+The design process followed the Double Diamond model, structured across four phases: \textbf{Discover}, \textbf{Define}, \textbf{Develop}, and \textbf{Deliver}. The first diamond addresses the problem space through divergent research and convergent synthesis. The second diamond addresses the solution space through divergent ideation and convergent prototyping and testing.
 
+%----------------------------------------------------------------------------------------
+\section{First Diamond: Problem Space}
+%----------------------------------------------------------------------------------------
+
+\subsection{Diverge — Discover}
+
+Contextual inquiry at procurement warehouses and processing factories expanded understanding of the problem space. Methods included ethnographic observation of the manual assessment process and in-context interviews with operators, quality technicians, and quality managers. Operational workflows, physical environment, time constraints, and failure modes of the existing process were explored without prejudging which factors would prove designable.
+
+\subsection{Converge — Define}
+
+The research was synthesised into four design constraints:
+
+\begin{table}[H]
+\centering
+\caption{Design constraints derived from contextual research.}
+\label{tab:design_constraints}
+\begin{tabular}{p{0.5cm} p{3.5cm} p{8cm}}
+\toprule
+\textbf{\#} & \textbf{Constraint} & \textbf{Requirement} \\
+\midrule
+C1 & Latency            & Full assessment cycle completed in under five minutes. \\
+C2 & Accuracy           & Classification accuracy above 95\% across all twelve grain categories. \\
+C3 & Occlusion          & Each grain entity must be individually visible to the camera; grains stacking behind one another must be separated. \\
+C4 & Full surface inspection & Both dorsal and ventral surfaces of each grain must be exposed to the imaging system within a single assessment cycle. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Constraints C3 and C4 together reframed the technical direction: any viable solution required a mechanical means of dispersing and rotating grain, not purely a computational improvement.
+
+%----------------------------------------------------------------------------------------
+\section{Second Diamond: Solution Space}
+%----------------------------------------------------------------------------------------
+
+\subsection{Diverge — Develop}
+
+Three domains were explored in parallel through divergent prototyping: imaging geometry, grain dispersion mechanism, and illumination configuration.
+
+\subsection{Converge — Deliver}
+
+Each option was evaluated against C1--C4. The matrices below document the convergence.
+
+\subsubsection{Imaging Geometry}
+
+\begin{table}[H]
+\centering
+\caption{Evaluation of imaging geometry options against design constraints.}
+\label{tab:imaging_convergence}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{p{3.2cm} p{2.2cm} p{3.8cm} p{2.8cm} p{2.8cm} p{1.8cm}}
+\toprule
+\textbf{Option} & \textbf{C1 Latency} & \textbf{C2 Accuracy} & \textbf{C3 Occlusion} & \textbf{C4 Full Surface} & \textbf{Decision} \\
+\midrule
+Bottom-only & \checkmark & \texttimes\ Dirt on tray base degrades image & \checkmark & \checkmark & Rejected \\
+Simultaneous top + bottom & \checkmark & \texttimes\ Camera visible in opposing frame & \checkmark & \checkmark & Rejected \\
+\textbf{Top-only} & \checkmark & \checkmark & \checkmark\ via dispersion & \checkmark\ via dispersion & \textbf{Selected} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\subsubsection{Grain Dispersion Mechanism}
+
+\begin{table}[H]
+\centering
+\caption{Evaluation of grain dispersion mechanisms against design constraints.}
+\label{tab:dispersion_convergence}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{p{3.2cm} p{2.2cm} p{3cm} p{3cm} p{3cm} p{1.8cm}}
+\toprule
+\textbf{Option} & \textbf{C1 Latency} & \textbf{C2 Accuracy} & \textbf{C3 Occlusion} & \textbf{C4 Full Surface} & \textbf{Decision} \\
+\midrule
+Manual spreading        & \checkmark & \texttimes\ Operator-dependent & \checkmark & \checkmark & Rejected \\
+Vibration motor         & \checkmark & \texttimes & \checkmark\ Lateral only & \texttimes\ Cannot flip grains & Rejected \\
+Solenoids, simultaneous & \checkmark & \texttimes\ Grain overflow & \texttimes\ Grain overflow & \texttimes\ Grain overflow & Rejected \\
+\textbf{Solenoids, staggered delay} & \checkmark & \checkmark & \checkmark & \checkmark & \textbf{Selected} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+\subsubsection{Illumination Configuration}
+
+\begin{table}[H]
+\centering
+\caption{Evaluation of illumination configurations against design constraints. C3 and C4 are not applicable to illumination; they are addressed by the dispersion mechanism.}
+\label{tab:illumination_convergence}
+\begin{tabular}{p{4cm} p{2cm} p{5cm} p{1.8cm}}
+\toprule
+\textbf{Option} & \textbf{C1 Latency} & \textbf{C2 Accuracy} & \textbf{Decision} \\
+\midrule
+White top + chart paper background   & \checkmark & \texttimes\ Insufficient chromatic differentiation & Rejected \\
+White top + LCD bottom               & \checkmark & \texttimes\ Partial improvement, below 95\% & Rejected \\
+White top + RGB LED bottom           & \checkmark & \texttimes\ Below threshold on confusable pairs & Rejected \\
+\textbf{RGB LEDs top + bottom (fixed AWB)} & \checkmark & \checkmark & \textbf{Selected} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The converged prototype was validated through expert testing at procurement sites. Findings are reported in Chapter~\ref{Chapter8}.

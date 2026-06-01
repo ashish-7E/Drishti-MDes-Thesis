@@ -1,8 +1,8 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces A typical 100-gram wheat grain sample spread on a sorting table.}}{1}{figure.caption.14}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces The twelve distinct grain and impurity categories identified during manual assessment.}}{2}{figure.caption.16}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces A typical 100-gram wheat grain sample.}}{1}{figure.caption.14}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Grains and impurities segregated during manual assessment.}}{2}{figure.caption.16}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Initial checks during periphery testing: (a) moisture measurement and (b) Hectolitre weight for variety verification.}}{8}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Initial checks grains and impurities segregation: (a) moisture measurement and (b) Hectolitre weight for wheat variety verification.}}{8}{figure.caption.25}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Master sample collection from \textit {boris} at godown.}}{9}{figure.caption.28}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Final illumination configurations: (a)~BY yellow backlight for grain boundary segmentation, (b)~WB white top-light for general classification, and (c)~BR red backlight for multispectral defect classification.}}{12}{figure.caption.32}%
@@ -19,12 +19,13 @@
 \contentsline {figure}{\numberline {6.1}{\ignorespaces The finalised Drishti device with the hole-fitting grain tray, positioned for sample loading.}}{28}{figure.caption.59}%
 \contentsline {figure}{\numberline {6.2}{\ignorespaces The Home Screen provides a clear, distraction-free starting point for the operator.}}{29}{figure.caption.61}%
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Step 1: Sample Insertion prompt, ensuring the operator has correctly placed the tray before proceeding.}}{30}{figure.caption.62}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Step 3: Real-time optoelectrical calibration feedback.}}{30}{figure.caption.63}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Step 3: Spreading and Rotating of grains using solenoid mechanism}}{30}{figure.caption.63}%
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Step 4: Image capture sequence, communicating progress as multiple frames are acquired.}}{31}{figure.caption.64}%
 \contentsline {figure}{\numberline {6.6}{\ignorespaces Step 5: The final Quality Report, using threshold-relative visualisations for immediate interpretability.}}{31}{figure.caption.65}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Comparison of assessment times between manual human inspection and the automated Drishti device across various GPU server configurations.}}{34}{figure.caption.70}%
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Comparative accuracy across three inspection scenarios over ten test cases: manual inspection, open-environment camera, and Drishti. The device achieved the highest accuracy, particularly for orientation-sensitive categories such as \textit {Infested} and \textit {Kernel Burnt}.}}{36}{figure.caption.73}%
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
